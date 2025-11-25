@@ -1,1 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: #0A0A0A; /* ou a cor do seu fundo */
+    box-sizing: border-box;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    background: linear-gradient(135deg, #1e1e2e, #11111a);
+    min-height: 100vh;
+    color: #f5f6fa;
+}
+
+/* Garante que nenhum traço branco apareça */
+* {
+    outline: none !important;
+    border: none !important;
+    box-shadow: none !important;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", sans-serif;
+}
+
+/* Se sua página usa um container principal, aplique isso nele também */
+.app-container {
+    background: #0A0A0A;
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
