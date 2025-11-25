@@ -1,36 +1,71 @@
-
 <div class="main-wrapper">
 
     <!-- ===== HEADER ===== -->
-    <header class="header">
-        <div class="logo-area">
-            <img src="/assets/ford-logo.png" alt="Ford" class="ford-logo">
-            <span class="logo-text">Journey Planner</span>
-        </div>
+    <header>
+        <nav class="navbar navbar-dark bg-body-tertiary fixed-top">
 
-        <nav class="header-nav">
-            <div class="profile-btn">Perfil</div>
+            <div class="container-fluid">
+                <div class="left-group">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="logo-area">
+                        <img src="ford.png" alt="Ford" class="ford-logo">
+                        <span class="logo-text">Journey Planner</span>
+                    </div>
+                </div>
+
+                <nav class="header-nav">
+                    <!-- botão Perfil que abre um dropdown abaixo (similar à offcanvas do menu) -->
+                    <div class="dropdown">
+                        <button class="profile-btn dropdown-toggle" type="button" id="perfilDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Perfil
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
+                            <li class="dropdown-item profile-item-name">Beatriz</li>
+                            <li class="dropdown-item profile-item-level">Nível Ford: Platinum</li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Menu</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" routerLink="/Dashboard">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Metas</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Viagens</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link">Nível Ford</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </nav>
+
+
+
+
     </header>
-
-    <!-- ===== LAYOUT ===== -->
-    <div class="layout">
-
-        <!-- ===== SIDEBAR ===== -->
-        <aside class="sidebar">
-            <ul>
-                <li class="active">Dashboard</li>
-                <li>Metas</li>
-                <li>Viagens</li>
-                <li>Níveis Ford</li>
-            </ul>
-        </aside>
-
-       
-    </div>
 
 </div>
 
 <footer class="footer">
-    <div class="footer-left">© 2025 Journey Planner — Desenvolvido por Beatriz</div>
+    <div class="footer-page">© 2025 Journey Planner — Desenvolvido por Beatriz</div>
 </footer>

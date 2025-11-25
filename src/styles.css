@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.min.css";
 
 body {
     margin: 0;
@@ -12,6 +13,14 @@ body {
     background: linear-gradient(135deg, #1e1e2e, #11111a);
     min-height: 100vh;
     color: #f5f6fa;
+}
+
+html, body {
+  width: 100%;
+  box-sizing: border-box;
+}
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 /* Garante que nenhum traço branco apareça */
