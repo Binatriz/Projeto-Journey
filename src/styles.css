@@ -9,7 +9,7 @@ body {
     background: #0A0A0A; /* ou a cor do seu fundo */
     box-sizing: border-box;
     overflow-x: hidden;
-    overflow-y: hidden;
+    
     background: linear-gradient(135deg, #1e1e2e, #11111a);
     min-height: 100vh;
     color: #f5f6fa;

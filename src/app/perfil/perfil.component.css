@@ -20,7 +20,7 @@
 }
 
 .navbar.bg-body-tertiary.fixed-top {
-  background: rgba(255, 255, 255, 0.06) !important;
+  background: rgba(30, 30, 44, 1) !important;
  
   
   border-radius: 10px;
@@ -196,7 +196,7 @@
     font-size: 14px;
     color: rgba(255, 255, 255, 0.7);
     text-align: center;
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(30, 30, 44, 1);
     position: fixed;
     bottom: 0;
     left: 0;
@@ -225,5 +225,52 @@
   /* empilha o conteúdo do header se necessário */
   .navbar .container-fluid {
     gap: 6px;
+  }
+}
+
+@media (max-width: 380px) {
+  /* mantém tudo em uma linha e permite que itens encolham corretamente */
+  .navbar .container-fluid {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+  }
+
+  /* reduz logo e texto para caber ao lado do toggler */
+  .ford-logo {
+    height: 22px;
+  }
+  .logo-text {
+    font-size: 14px;
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* garante que o botão toggler e o profile não encolham demais */
+  .navbar-toggler,
+  .profile-btn {
+    flex: 0 0 auto;
+    white-space: nowrap;
+  }
+
+  /* força o bloco do perfil a alinhar à direita sem quebrar linha */
+  .header-nav {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+  }
+
+  /* reduz padding do perfil para economizar espaço */
+  .profile-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  /* evita overflow horizontal */
+  .logo-area,
+  .left-group {
+    min-width: 0;
   }
 }
