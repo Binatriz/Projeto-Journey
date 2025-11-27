@@ -12,60 +12,31 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './companheiro-ford.component.html',
   styleUrl: './companheiro-ford.component.css'
 })
-export class CompanheiroFordComponent implements OnInit {
+export class CompanheiroFordComponent implements OnInit  {
 
-  submodels: Submodel[] = [];
+  selectedMake = 'Ford';
 
-  // opções para os selects
-  idOptions: (number)[] = [];
-  oemOptions: (number)[] = [];
-  yearOptions: number[] = [];
-  makeOptions: string[] = [];
-  modelOptions: string[] = [];
-  submodelOptions: string[] = [];
+  // LISTA DE SUBMODELOS
+  submodels: any[] = [];
 
-  // valores selecionados (two-way bind no template)
-  selectedId: number | null = null;
-  selectedOem: number | null = null;
-  selectedYear: number | null = null;
-  selectedMake: string | null = null;
-  selectedModel: string | null = null;
-  selectedSubmodel: string | null = null;
+  // SUBMODELO ESCOLHIDO
+  selectedSubmodel: any = null;
 
-  constructor(
-    private auth: AuthService,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private carApi: AuthService) {}
 
   ngOnInit(): void {
-    // busca lista completa
-    this.auth.getVehicles('Ford').subscribe({
-      next: (list) => {
-        this.submodels = list || [];
+    this.loadSubmodels();
+  }
 
-        // popular opções únicas
-        this.idOptions = Array.from(new Set(this.submodels.map(s => s.id))).filter(Boolean) as number[];
-        this.oemOptions = Array.from(new Set(this.submodels.map(s => (s as any).oem_make_model_id))).filter(Boolean) as number[];
-        this.yearOptions = Array.from(new Set(this.submodels.map(s => s.year))).filter(Boolean) as number[];
-        this.makeOptions = Array.from(new Set(this.submodels.map(s => s.make))).filter(Boolean) as string[];
-        this.modelOptions = Array.from(new Set(this.submodels.map(s => s.model))).filter(Boolean) as string[];
-        this.submodelOptions = Array.from(new Set(this.submodels.map(s => s.submodel))).filter(Boolean) as string[];
-
-        // verifica query param id e seleciona o item correspondente
-        const idParam = this.route.snapshot.queryParamMap.get('id');
-        if (idParam) {
-          const found = this.submodels.find(s => String(s.id) === idParam);
-          if (found) {
-            this.selectedId = found.id ?? null;
-            this.selectedOem = (found as any).oem_make_model_id ?? null;
-            this.selectedYear = found.year ?? null;
-            this.selectedMake = found.make ?? null;
-            this.selectedModel = found.model ?? null;
-            this.selectedSubmodel = found.submodel ?? null;
-          }
-        }
-      },
-      error: (err) => console.error('Erro ao carregar submodels', err)
+  // CARREGA SUBMODELS DA API (FORD)
+  loadSubmodels() {
+    this.carApi.getModelsByMake('Ford').subscribe((data: any) => {
+      this.submodels = data.Results;
     });
+  }
+
+  // QUANDO O SUBMODEL É SELECIONADO
+  onSelect() {
+    console.log("Selecionado:", this.selectedSubmodel);
   }
 }

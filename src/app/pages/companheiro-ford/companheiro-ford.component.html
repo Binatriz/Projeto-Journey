@@ -6,64 +6,46 @@
 
   <div class="selects-wrapper">
 
-    <!-- SELECT ID -->
+    <!-- MARCA FIXA -->
     <div class="select-box">
-      <label>ID</label>
-      <select [(ngModel)]="selectedId" name="selectId">
-        <option value="" disabled selected>Selecione</option>
-        <option *ngFor="let id of idOptions" [value]="id">{{ id }}</option>
-      </select>
+      <label for="makeInput">Marca</label>
+      <input id="makeInput" type="text" value="Ford" disabled />
     </div>
 
-    <!-- SELECT OEM MAKE MODEL ID -->
+    <!-- SELECT DE SUBMODELS -->
     <div class="select-box">
-      <label>OEM Make Model ID</label>
-      <select [(ngModel)]="selectedOem" name="selectOem">
-        <option value="" disabled selected>Selecione</option>
-        <option *ngFor="let oem of oemOptions" [value]="oem">{{ oem }}</option>
-      </select>
-    </div>
+      <label for="submodelSelect">Modelos / Submodels</label>
+      <select
+        id="submodelSelect"
+        name="selectSubmodel"
+        [(ngModel)]="selectedSubmodel"
+        (change)="onSelect()">
 
-    <!-- SELECT YEAR -->
-    <div class="select-box">
-      <label>Ano</label>
-      <select [(ngModel)]="selectedYear" name="selectYear">
-        <option value="" disabled selected>Selecione</option>
-        <option *ngFor="let y of yearOptions" [value]="y">{{ y }}</option>
-      </select>
-    </div>
+        <option [ngValue]="null" disabled>Selecione</option>
 
-    <!-- SELECT MAKE -->
-    <div class="select-box">
-      <label>Make</label>
-      <select [(ngModel)]="selectedMake" name="selectMake">
-        <option value="" disabled selected>Selecione</option>
-        <option *ngFor="let m of makeOptions" [value]="m">{{ m }}</option>
-      </select>
-    </div>
+        <option *ngFor="let sm of submodels" [ngValue]="sm">
+          {{ sm.Model_Name }} – {{ sm.VehicleTypeName }}
+        </option>
 
-    <!-- SELECT MODEL -->
-    <div class="select-box">
-      <label>Model</label>
-      <select [(ngModel)]="selectedModel" name="selectModel">
-        <option value="" disabled selected>Selecione</option>
-        <option *ngFor="let mo of modelOptions" [value]="mo">{{ mo }}</option>
-      </select>
-    </div>
-
-    <!-- SELECT SUBMODEL -->
-    <div class="select-box">
-      <label>Submodel</label>
-      <select [(ngModel)]="selectedSubmodel" name="selectSubmodel">
-        <option value="" disabled selected>Selecione</option>
-        <option *ngFor="let sm of submodelOptions" [value]="sm">{{ sm }}</option>
       </select>
     </div>
 
   </div>
 
-  <div class="car-image" *ngIf="selectedModel || selectedSubmodel">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/2018_Ford_Mustang_GT_5.0.jpg" alt="Carro Ford">
+  <!-- INFORMAÇÕES DO VEÍCULO -->
+  <div class="vehicle-info" *ngIf="selectedSubmodel">
+    <h2>Informações do veículo</h2>
+
+    <p><strong>Marca:</strong> {{ selectedSubmodel.Make_Name }}</p>
+    <p><strong>Modelo:</strong> {{ selectedSubmodel.Model_Name }}</p>
+    <p><strong>Tipo de veículo:</strong> {{ selectedSubmodel.VehicleTypeName }}</p>
+
+    <div class="car-image">
+      <img 
+        src="https://upload.wikimedia.org/wikipedia/commons/3/3e/2018_Ford_Mustang_GT_5.0.jpg"
+        alt="Carro Ford"
+      />
+    </div>
   </div>
 
 </div>

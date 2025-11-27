@@ -8,41 +8,12 @@ import { Submodel } from '../models/submodel';
 })
 export class AuthService {
 
-  private baseUrl = 'https://carapi.app/api/submodels/v2';
-  private authUrl = 'https://carapi.app/api/auth/login';
+  private base = 'https://vpic.nhtsa.dot.gov/api/vehicles';
 
-  // fallback/token fixo (opcional). Recomenda-se usar login() para obter JWT real.
-  // api secret: 4196968c284f87c3dc87690556e0d7ad
-  private readonly FALLBACK_TOKEN = 'f81af3f9-955a-418d-acaa-890ae6483fda';
-  private readonly FALLBACK_SECRET = '4196968c284f87c3dc87690556e0d7ad'
+  constructor(private http: HttpClient) {}
 
-  // token atual (pode vir do login ou do localStorage)
-  private jwtToken: string | null = null;
-
-  constructor(private http: HttpClient) {
-    // tenta recuperar token em cache
-    this.jwtToken = localStorage.getItem('carapi_jwt');
+  // Buscar modelos por marca
+  getModelsByMake(make: string): Observable<any> {
+    return this.http.get(`${this.base}/getmodelsformake/${make}?format=json`);
   }
-
-  // salva token em memória e localStorage
-  private setToken(token: string) {
-    this.jwtToken = token;
-    localStorage.setItem('carapi_jwt', token);
-  }
-
-  // Faz POST /api/auth/login com api_token + api_secret e guarda o JWT retornado (responseType text)
-  login(api_token: string, api_secret: string): Observable<string> {
-    return this.http.post(this.authUrl, { api_token, api_secret }, { responseType: 'text' })
-      .pipe(tap(token => this.setToken(token)));
-  }
-
-  // Busca submodels; inclui Authorization: Bearer <token> se existir, caso contrário usa FALLBACK_TOKEN
-  getVehicles(make: string = 'Ford'): Observable<Submodel[]> {
-    const params = new HttpParams().set('make', make);
-    let headers = new HttpHeaders({ 'Accept': 'application/json' });
-    const token = this.jwtToken ?? this.FALLBACK_TOKEN;
-    headers = headers.set('Authorization', `Bearer ${token}`);
-    return this.http.get<Submodel[]>(this.baseUrl, { params, headers });
-  }
-  
 }
