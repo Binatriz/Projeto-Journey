@@ -19,7 +19,6 @@ export class CompanheiroFordComponent implements OnInit {
   modelos: any[] = [];
   selectedModelo: any = null;
 
-  // ANOS DO MODELO
   anos: any[] = [];
   selectedAno: string | null = null;
 
@@ -32,14 +31,14 @@ export class CompanheiroFordComponent implements OnInit {
     this.loadModelos();
   }
 
-  /** 1 - Carregar modelos de Ford */
+  /*Carregar modelos da Ford */
   loadModelos() {
     this.api.getModelosFord().subscribe((data: any) => {
       this.modelos = data.modelos;
     });
   }
 
-  /** 2 - Quando escolher o modelo, carregar anos */
+  /* Carregar anos */
   onModeloChange() {
     this.selectedAno = null;
     this.carInfo = null;
@@ -50,7 +49,7 @@ export class CompanheiroFordComponent implements OnInit {
       });
   }
 
-  /** 3 - Quando escolher ano, carregar informações do veículo */
+  /* informações do veículo */
   onAnoChange() {
     if (!this.selectedModelo || !this.selectedAno) return;
 

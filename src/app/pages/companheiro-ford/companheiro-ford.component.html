@@ -9,13 +9,6 @@
     <!-- COLUNA ESQUERDA -->
     <div class="selects-column">
 
-      <!-- MARCA FIXA -->
-      <div class="select-box">
-        <label for="makeInput">Marca</label>
-        <input id="makeInput" type="text" value="Ford" disabled />
-      </div>
-
-      <!-- SELECT MODELO -->
       <div class="select-box">
         <label for="modeloSelect">Modelos</label>
 
@@ -33,7 +26,7 @@
         </select>
       </div>
 
-      <!-- SELECT ANO (DEPENDE DO MODELO) -->
+      <!--(DEPENDE DO MODELO) -->
       <div class="select-box" *ngIf="selectedModelo">
         <label for="anoSelect">Ano</label>
 
