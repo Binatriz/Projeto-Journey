@@ -7,21 +7,29 @@
 
 /* Título */
 .car-select-page h1 {
-    font-size: 32px;
+    font-size: 34px;
     font-weight: 600;
+    margin-bottom: 45px;
+    letter-spacing: 1px;
+}
+
+/* CONTAINER DE DUAS COLUNAS */
+.selects-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
     margin-bottom: 40px;
 }
 
-/* Wrapper dos selects */
-.selects-wrapper {
+/* COLUNA DE SELECTS */
+.selects-column {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
     gap: 25px;
-    margin-bottom: 50px;
 }
 
-/* Caixa individual de cada select */
+/* CAIXA DOS SELECTS */
 .select-box {
     display: flex;
     flex-direction: column;
@@ -30,14 +38,15 @@
 
 .select-box label {
     margin-bottom: 6px;
-    font-size: 16px;
+    font-size: 15px;
     color: #cfcfcf;
 }
 
-/* Estilo dos selects */
-.select-box select {
-    width: 180px;
-    padding: 10px;
+/* Inputs e Selects */
+.select-box select,
+.select-box input {
+    width: 200px;
+    padding: 12px;
     border-radius: 10px;
     border: none;
     background-color: #1f2335;
@@ -45,20 +54,73 @@
     font-size: 15px;
     outline: none;
     cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: 0.2s;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
 }
 
-/* Seleção das opções */
+/* Hover */
+.select-box select:hover,
+.select-box input:hover {
+    background-color: #252a40;
+}
+
+/* Foco */
+.select-box select:focus,
+.select-box input:focus {
+    background-color: #2d3350;
+    box-shadow: 0 0 10px rgba(80,120,255,0.4);
+}
+
+/* Opções */
 .select-box select option {
     background-color: #1b1e2e;
     padding: 10px;
 }
 
-/* Imagem */
+/* CARD DE INFORMAÇÕES */
+.vehicle-info-card {
+    background-color: rgba(255,255,255,0.05);
+    padding: 25px 30px;
+    border-radius: 15px;
+    width: 260px;
+    text-align: left;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+}
+
+.vehicle-info-card h2 {
+    font-size: 22px;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.vehicle-info-card p {
+    margin: 6px 0;
+    font-size: 15px;
+}
+
+/* IMAGEM */
 .car-image img {
     width: 480px;
     max-width: 90%;
     border-radius: 12px;
-    margin-top: 10px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    margin-top: 20px;
+    box-shadow: 0 4px 25px rgba(0,0,0,0.45);
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 900px) {
+    .selects-container {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .vehicle-info-card {
+        width: 90%;
+    }
+
+    .select-box select,
+    .select-box input {
+        width: 100%;
+    }
 }

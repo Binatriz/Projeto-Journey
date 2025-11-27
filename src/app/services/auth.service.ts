@@ -1,19 +1,26 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable, model } from '@angular/core';
-import { Observable, tap } from 'rxjs';
-import { Submodel } from '../models/submodel';
+import { map, Observable, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private base = 'https://vpic.nhtsa.dot.gov/api/vehicles';
+  base = 'https://parallelum.com.br/fipe/api/v1/carros';
 
   constructor(private http: HttpClient) {}
 
-  // Buscar modelos por marca
-  getModelsByMake(make: string): Observable<any> {
-    return this.http.get(`${this.base}/getmodelsformake/${make}?format=json`);
+  /** Ford = id 22 */
+  getModelosFord() {
+    return this.http.get(`${this.base}/marcas/22/modelos`);
+  }
+
+  getAnosModelo(modeloId: number) {
+    return this.http.get(`${this.base}/marcas/22/modelos/${modeloId}/anos`);
+  }
+
+  getInfoVeiculo(modeloId: number, anoCodigo: string) {
+    return this.http.get(`${this.base}/marcas/22/modelos/${modeloId}/anos/${anoCodigo}`);
   }
 }

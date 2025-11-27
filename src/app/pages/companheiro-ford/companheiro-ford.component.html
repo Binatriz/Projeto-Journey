@@ -4,48 +4,73 @@
 
   <h1>Escolha seu companheiro FORD</h1>
 
-  <div class="selects-wrapper">
+  <div class="selects-container">
 
-    <!-- MARCA FIXA -->
-    <div class="select-box">
-      <label for="makeInput">Marca</label>
-      <input id="makeInput" type="text" value="Ford" disabled />
+    <!-- COLUNA ESQUERDA -->
+    <div class="selects-column">
+
+      <!-- MARCA FIXA -->
+      <div class="select-box">
+        <label for="makeInput">Marca</label>
+        <input id="makeInput" type="text" value="Ford" disabled />
+      </div>
+
+      <!-- SELECT MODELO -->
+      <div class="select-box">
+        <label for="modeloSelect">Modelos</label>
+
+        <select
+          id="modeloSelect"
+          [(ngModel)]="selectedModelo"
+          (change)="onModeloChange()">
+
+          <option [ngValue]="null" disabled selected>Selecione</option>
+
+          <option *ngFor="let modelo of modelos" [ngValue]="modelo">
+            {{ modelo.nome }}
+          </option>
+
+        </select>
+      </div>
+
+      <!-- SELECT ANO (DEPENDE DO MODELO) -->
+      <div class="select-box" *ngIf="selectedModelo">
+        <label for="anoSelect">Ano</label>
+
+        <select
+          id="anoSelect"
+          [(ngModel)]="selectedAno"
+          (change)="onAnoChange()">
+
+          <option [ngValue]="null" disabled selected>Selecione</option>
+
+          <option *ngFor="let ano of anos" [value]="ano.codigo">
+            {{ ano.nome }}
+          </option>
+
+        </select>
+      </div>
+
     </div>
 
-    <!-- SELECT DE SUBMODELS -->
-    <div class="select-box">
-      <label for="submodelSelect">Modelos / Submodels</label>
-      <select
-        id="submodelSelect"
-        name="selectSubmodel"
-        [(ngModel)]="selectedSubmodel"
-        (change)="onSelect()">
+    <!-- COLUNA DIREITA (INFOS DO VEÍCULO) -->
+    <div class="info-column" *ngIf="carInfo">
+      <div class="vehicle-info">
+        <h2>Informações do veículo</h2>
 
-        <option [ngValue]="null" disabled>Selecione</option>
-
-        <option *ngFor="let sm of submodels" [ngValue]="sm">
-          {{ sm.Model_Name }} – {{ sm.VehicleTypeName }}
-        </option>
-
-      </select>
+        <p><strong>Marca:</strong> Ford</p>
+        <p><strong>Modelo:</strong> {{ carInfo.Modelo }}</p>
+        <p><strong>Ano:</strong> {{ carInfo.AnoModelo }}</p>
+        <p><strong>Combustível:</strong> {{ carInfo.Combustivel }}</p>
+        <p><strong>Valor FIPE:</strong> {{ carInfo.Valor }}</p>
+      </div>
     </div>
 
   </div>
 
-  <!-- INFORMAÇÕES DO VEÍCULO -->
-  <div class="vehicle-info" *ngIf="selectedSubmodel">
-    <h2>Informações do veículo</h2>
-
-    <p><strong>Marca:</strong> {{ selectedSubmodel.Make_Name }}</p>
-    <p><strong>Modelo:</strong> {{ selectedSubmodel.Model_Name }}</p>
-    <p><strong>Tipo de veículo:</strong> {{ selectedSubmodel.VehicleTypeName }}</p>
-
-    <div class="car-image">
-      <img 
-        src="https://upload.wikimedia.org/wikipedia/commons/3/3e/2018_Ford_Mustang_GT_5.0.jpg"
-        alt="Carro Ford"
-      />
-    </div>
+  <!-- IMAGEM -->
+  <div class="car-image" *ngIf="carInfo">
+    <img src="ford.png" alt="Carro Ford" />
   </div>
 
 </div>

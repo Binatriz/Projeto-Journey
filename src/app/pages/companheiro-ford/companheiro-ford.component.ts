@@ -12,31 +12,51 @@ import { NgFor, NgIf } from '@angular/common';
   templateUrl: './companheiro-ford.component.html',
   styleUrl: './companheiro-ford.component.css'
 })
-export class CompanheiroFordComponent implements OnInit  {
 
-  selectedMake = 'Ford';
+export class CompanheiroFordComponent implements OnInit {
 
-  // LISTA DE SUBMODELOS
-  submodels: any[] = [];
+  // MODELOS (lista da FIPE)
+  modelos: any[] = [];
+  selectedModelo: any = null;
 
-  // SUBMODELO ESCOLHIDO
-  selectedSubmodel: any = null;
+  // ANOS DO MODELO
+  anos: any[] = [];
+  selectedAno: string | null = null;
 
-  constructor(private carApi: AuthService) {}
+  // INFORMAÇÕES COMPLETAS DO VEÍCULO
+  carInfo: any = null;
+
+  constructor(private api: AuthService) {}
 
   ngOnInit(): void {
-    this.loadSubmodels();
+    this.loadModelos();
   }
 
-  // CARREGA SUBMODELS DA API (FORD)
-  loadSubmodels() {
-    this.carApi.getModelsByMake('Ford').subscribe((data: any) => {
-      this.submodels = data.Results;
+  /** 1 - Carregar modelos de Ford */
+  loadModelos() {
+    this.api.getModelosFord().subscribe((data: any) => {
+      this.modelos = data.modelos;
     });
   }
 
-  // QUANDO O SUBMODEL É SELECIONADO
-  onSelect() {
-    console.log("Selecionado:", this.selectedSubmodel);
+  /** 2 - Quando escolher o modelo, carregar anos */
+  onModeloChange() {
+    this.selectedAno = null;
+    this.carInfo = null;
+
+    this.api.getAnosModelo(this.selectedModelo.codigo)
+      .subscribe((data: any) => {
+        this.anos = data;
+      });
+  }
+
+  /** 3 - Quando escolher ano, carregar informações do veículo */
+  onAnoChange() {
+    if (!this.selectedModelo || !this.selectedAno) return;
+
+    this.api.getInfoVeiculo(this.selectedModelo.codigo, this.selectedAno)
+      .subscribe((data: any) => {
+        this.carInfo = data;
+      });
   }
 }
