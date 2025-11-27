@@ -14,6 +14,7 @@ export class AuthService {
   // fallback/token fixo (opcional). Recomenda-se usar login() para obter JWT real.
   // api secret: 4196968c284f87c3dc87690556e0d7ad
   private readonly FALLBACK_TOKEN = 'f81af3f9-955a-418d-acaa-890ae6483fda';
+  private readonly FALLBACK_SECRET = '4196968c284f87c3dc87690556e0d7ad'
 
   // token atual (pode vir do login ou do localStorage)
   private jwtToken: string | null = null;
