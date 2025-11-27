@@ -1,0 +1,69 @@
+<app-perfil></app-perfil>
+
+<div class="car-select-page">
+
+  <h1>Escolha seu companheiro FORD</h1>
+
+  <div class="selects-wrapper">
+
+    <!-- SELECT ID -->
+    <div class="select-box">
+      <label>ID</label>
+      <select [(ngModel)]="selectedId" name="selectId">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let id of idOptions" [value]="id">{{ id }}</option>
+      </select>
+    </div>
+
+    <!-- SELECT OEM MAKE MODEL ID -->
+    <div class="select-box">
+      <label>OEM Make Model ID</label>
+      <select [(ngModel)]="selectedOem" name="selectOem">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let oem of oemOptions" [value]="oem">{{ oem }}</option>
+      </select>
+    </div>
+
+    <!-- SELECT YEAR -->
+    <div class="select-box">
+      <label>Ano</label>
+      <select [(ngModel)]="selectedYear" name="selectYear">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let y of yearOptions" [value]="y">{{ y }}</option>
+      </select>
+    </div>
+
+    <!-- SELECT MAKE -->
+    <div class="select-box">
+      <label>Make</label>
+      <select [(ngModel)]="selectedMake" name="selectMake">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let m of makeOptions" [value]="m">{{ m }}</option>
+      </select>
+    </div>
+
+    <!-- SELECT MODEL -->
+    <div class="select-box">
+      <label>Model</label>
+      <select [(ngModel)]="selectedModel" name="selectModel">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let mo of modelOptions" [value]="mo">{{ mo }}</option>
+      </select>
+    </div>
+
+    <!-- SELECT SUBMODEL -->
+    <div class="select-box">
+      <label>Submodel</label>
+      <select [(ngModel)]="selectedSubmodel" name="selectSubmodel">
+        <option value="" disabled selected>Selecione</option>
+        <option *ngFor="let sm of submodelOptions" [value]="sm">{{ sm }}</option>
+      </select>
+    </div>
+
+  </div>
+
+  <div class="car-image" *ngIf="selectedModel || selectedSubmodel">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/2018_Ford_Mustang_GT_5.0.jpg" alt="Carro Ford">
+  </div>
+
+</div>

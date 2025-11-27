@@ -1,0 +1,64 @@
+.car-select-page {
+    text-align: center;
+    padding: 40px 20px;
+    color: #ffffff;
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Título */
+.car-select-page h1 {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+/* Wrapper dos selects */
+.selects-wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-bottom: 50px;
+}
+
+/* Caixa individual de cada select */
+.select-box {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.select-box label {
+    margin-bottom: 6px;
+    font-size: 16px;
+    color: #cfcfcf;
+}
+
+/* Estilo dos selects */
+.select-box select {
+    width: 180px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: #1f2335;
+    color: #ffffff;
+    font-size: 15px;
+    outline: none;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+/* Seleção das opções */
+.select-box select option {
+    background-color: #1b1e2e;
+    padding: 10px;
+}
+
+/* Imagem */
+.car-image img {
+    width: 480px;
+    max-width: 90%;
+    border-radius: 12px;
+    margin-top: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
