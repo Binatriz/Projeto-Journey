@@ -12,6 +12,7 @@ export class AuthService {
   private authUrl = 'https://carapi.app/api/auth/login';
 
   // fallback/token fixo (opcional). Recomenda-se usar login() para obter JWT real.
+  // api secret: 4196968c284f87c3dc87690556e0d7ad
   private readonly FALLBACK_TOKEN = 'f81af3f9-955a-418d-acaa-890ae6483fda';
 
   // token atual (pode vir do login ou do localStorage)
