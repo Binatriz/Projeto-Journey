@@ -98,14 +98,6 @@
     font-size: 15px;
 }
 
-/* IMAGEM */
-.car-image img {
-    width: 480px;
-    max-width: 90%;
-    border-radius: 12px;
-    margin-top: 20px;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.45);
-}
 
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {

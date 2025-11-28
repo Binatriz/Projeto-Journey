@@ -1,0 +1,42 @@
+<app-perfil></app-perfil>
+
+<main class="metas-container">
+
+    <!-- WRAPPER que permite posicionar setas nas laterais -->
+    <div class="metas-wrapper">
+
+        <!-- SETA ESQUERDA (DESKTOP) -->
+        <button class="seta seta-desktop esquerda" (click)="prev()">&#10094;</button>
+        <div class="metas-wrapper-card">
+            <!-- CARD -->
+            <div class="card-meta">
+                <h2>{{ metas[currentIndex].titulo }}</h2>
+
+                <div class="input-group">
+                    <input type="text" [(ngModel)]="metas[currentIndex].texto" placeholder="Escreva sua meta..." />
+
+                    <button class="btn-salvar" (click)="salvarMeta(currentIndex)">
+                        Salvar
+                    </button>
+                </div>
+
+                <ul>
+                    <li *ngFor="let item of metas[currentIndex].itens">
+                        <input type="checkbox" /> {{ item }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- SETA DIREITA (DESKTOP) -->
+        <button class="seta seta-desktop direita" (click)="next()">&#10095;</button>
+
+    </div>
+
+    <!-- SETAS MOBILE EMBAIXO DO CARD -->
+    <div class="setas-mobile">
+        <button class="seta" (click)="prev()">&#10094;</button>
+        <button class="seta" (click)="next()">&#10095;</button>
+    </div>
+
+</main>

@@ -1,0 +1,135 @@
+.metas-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 35px 0;
+}
+
+.metas-wrapper {
+    position: relative;   /* 🔥 agora as setas sabem onde ficar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.metas-wrapper-card{
+    padding: 1%;
+}
+
+/* CARD */
+.card-meta {
+    width: 70vw;          /* sempre proporcional ao monitor */
+    min-width: 400px;     /* limite para não ficar pequeno demais */
+    
+    min-height: 70vh;
+
+    padding: 4vw;         /* padding proporcional ao monitor */
+    background: #0f132b;
+    border-radius: 18px;
+    color: white;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+    transition: 0.3s ease;
+}
+
+/* INPUTS */
+.input-group {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 16px;
+    border-radius: 10px;
+    border: none;
+    font-size: 18px;
+}
+
+.btn-salvar {
+    background: #2b6dff;
+    color: white;
+    padding: 14px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* SETAS DE BAIXO (mobile) */
+.setas-mobile {
+    display: none;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.seta {
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: white;
+    font-size: 28px;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.seta:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+/* SETAS LATERAIS DESKTOP */
+.seta-desktop {
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 22px;         /* 🔥 diminui o tamanho do símbolo */
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.1);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.seta-desktop.esquerda {
+  left: -300px;
+}
+
+.seta-desktop.direita {
+  right: -300px;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+    .metas-container {
+        flex-direction: column;
+        padding: 20px 10px;
+    }
+
+    /* CARD RESPONSIVO */
+    .card-meta {
+        min-width: unset;  /* 🔥 remove o min-width que quebrava tudo */
+        width: 100%;
+        max-width: 100%;
+        padding: 25px;
+    }
+
+    /* esconder setas laterais */
+    .seta-desktop {
+        display: none !important;
+    }
+
+    /* mostrar setas de baixo */
+    .setas-mobile {
+        display: flex;
+    }
+
+    .seta {
+        font-size: 24px;
+        padding: 10px 15px;
+    }
+}
