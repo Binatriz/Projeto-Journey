@@ -2,38 +2,45 @@
 
 <main class="metas-container">
 
-    <!-- WRAPPER que permite posicionar setas nas laterais -->
     <div class="metas-wrapper">
 
-        <!-- SETA ESQUERDA (DESKTOP) -->
+        <!-- SETAS DESKTOP -->
         <button class="seta seta-desktop esquerda" (click)="prev()">&#10094;</button>
         <div class="metas-wrapper-card">
-            <!-- CARD -->
+            <!-- CARD PRINCIPAL -->
             <div class="card-meta">
+
                 <h2>{{ metas[currentIndex].titulo }}</h2>
 
+                <!-- INPUT PARA ADICIONAR ITEM -->
                 <div class="input-group">
-                    <input type="text" [(ngModel)]="metas[currentIndex].texto" placeholder="Escreva sua meta..." />
+                    <input type="text" [(ngModel)]="novoItem" placeholder="Adicionar item..."
+                        (keyup.enter)="adicionarItem()" />
 
-                    <button class="btn-salvar" (click)="salvarMeta(currentIndex)">
-                        Salvar
+                    <button class="btn-salvar" (click)="adicionarItem()">
+                        +
                     </button>
                 </div>
 
-                <ul>
-                    <li *ngFor="let item of metas[currentIndex].itens">
-                        <input type="checkbox" /> {{ item }}
+                <!-- LISTA DE ITENS -->
+                <ul class="lista-itens">
+                    <li *ngFor="let item of metas[currentIndex].itens; let i = index">
+                        <label class="checkbox-linha">
+                            <input type="checkbox" [(ngModel)]="item.feito" />
+                            <span [class.riscado]="item.feito">{{ item.texto }}</span>
+                        </label>
                     </li>
                 </ul>
+
             </div>
         </div>
 
-        <!-- SETA DIREITA (DESKTOP) -->
+        <!-- SETA DIREITA DESKTOP -->
         <button class="seta seta-desktop direita" (click)="next()">&#10095;</button>
 
     </div>
 
-    <!-- SETAS MOBILE EMBAIXO DO CARD -->
+    <!-- SETAS MOBILE -->
     <div class="setas-mobile">
         <button class="seta" (click)="prev()">&#10094;</button>
         <button class="seta" (click)="next()">&#10095;</button>

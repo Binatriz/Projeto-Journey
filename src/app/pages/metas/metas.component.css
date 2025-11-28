@@ -101,6 +101,27 @@ input[type="text"] {
 .seta-desktop.direita {
   right: -300px;
 }
+.lista-itens {
+  list-style: none;
+}
+.checkbox-linha {
+  display: flex;
+  align-items: center;
+  gap: 10px;      /* espaço entre o quadradinho e o nome */
+  cursor: pointer;
+  margin: 6px 0;  /* espaço entre linhas */
+}
+
+.checkbox-linha input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.riscado {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
 
 /* MOBILE */
 @media (max-width: 768px) {
