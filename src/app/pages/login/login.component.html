@@ -1,0 +1,40 @@
+<div class="principal">
+  <div class="img">
+    <img src="assets/img/ranger.png" alt="Imagem Ford" />
+  </div>
+
+  <div class="container-right">
+    <div class="login-container">
+      <div class="login-logo">
+        <img src="assets/img/ford.png" alt="Ford Logo" />
+      </div>
+
+      <div class="login">
+        <form class="login-form" (ngSubmit)="login()">
+          <h2 class="login-title">Boas-Vindas</h2>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput [(ngModel)]="nome" name="nome" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input
+              type="password"
+              matInput
+              [(ngModel)]="senha"
+              name="senha"
+            />
+          </mat-form-field>
+
+          <button mat-fab extended class="btn-login">Entrar</button>
+        </form>
+      </div>
+
+      <div class="copyright">
+        <p>&copy; Ford 2025 — Todos os direitos reservados</p>
+      </div>
+    </div>
+  </div>
+</div>
