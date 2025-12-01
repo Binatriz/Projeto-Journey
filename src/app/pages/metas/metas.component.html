@@ -10,7 +10,27 @@
             <!-- CARD PRINCIPAL -->
             <div class="card-meta">
 
-                <h2>{{ metas[currentIndex].titulo }}</h2>
+                <div class="contador-cards">
+                    {{ currentIndex + 1 }} / {{ metas.length }}
+                </div>
+
+                <div class="titulo-area">
+
+                    <!-- MODO VISUALIZAÇÃO -->
+                    <h2 *ngIf="!metas[currentIndex].editandoTitulo">
+                        {{ metas[currentIndex].titulo }}
+                    </h2>
+
+                    <!-- Input para editar -->
+                    <input *ngIf="metas[currentIndex].editandoTitulo" type="text"
+                        [(ngModel)]="metas[currentIndex].titulo" (blur)="salvarTitulo(currentIndex)"
+                        (keydown.enter)="salvarTitulo(currentIndex)" class="input-editar-titulo" />
+
+                    <!-- Botão lápis -->
+                    <button class="btn-editar" (click)="editarTitulo(currentIndex)">
+                        ✎
+                    </button>
+                </div>
 
                 <!-- INPUT PARA ADICIONAR ITEM -->
                 <div class="input-group">
@@ -32,18 +52,28 @@
                     </li>
                 </ul>
 
+                <div class="progresso">
+                    <div class="barra">
+                        <div class="preenchimento" [style.width.%]="getProgresso(currentIndex)"></div>
+                    </div>
+                    <p class="texto-progresso">{{ getProgresso(currentIndex) }}% completo</p>
+                </div>
             </div>
         </div>
-
         <!-- SETA DIREITA DESKTOP -->
         <button class="seta seta-desktop direita" (click)="next()">&#10095;</button>
 
     </div>
 
     <!-- SETAS MOBILE -->
-    <div class="setas-mobile">
-        <button class="seta" (click)="prev()">&#10094;</button>
-        <button class="seta" (click)="next()">&#10095;</button>
+    <div class="navegacao-container">
+        <div class="setas-mobile">
+            <button class="seta" (click)="prev()">&#10094;</button>
+            <button class="seta" (click)="next()">&#10095;</button>
+        </div>
+
+        <button class="btn-add" (click)="addMeta()">+</button>
+
     </div>
 
 </main>

@@ -1,5 +1,6 @@
 .metas-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 30px;
@@ -7,30 +8,67 @@
 }
 
 .metas-wrapper {
-    position: relative;   /* 🔥 agora as setas sabem onde ficar */
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
 }
 
-.metas-wrapper-card{
+.metas-wrapper-card {
     padding: 1%;
 }
 
 /* CARD */
 .card-meta {
-    width: 70vw;          /* sempre proporcional ao monitor */
-    min-width: 400px;     /* limite para não ficar pequeno demais */
-    
+    width: 70vw;
+    min-width: 400px;
     min-height: 70vh;
-
-    padding: 4vw;         /* padding proporcional ao monitor */
+    padding: 4vw;
     background: #0f132b;
     border-radius: 18px;
     color: white;
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.35);
+    position: relative;
     transition: 0.3s ease;
+}
+
+.contador-cards {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 16px;
+    color: #888888;
+}
+
+.titulo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-editar {
+    background: transparent;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    opacity: 0.7;
+    transform: rotate(90deg);
+}
+
+.btn-editar:hover {
+    opacity: 1;
+}
+
+.input-editar-titulo {
+    margin-top: 12px;
+    margin-bottom: 12px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    border: 1px solid #888;
+    font-size: 18px;
+    width: 250px;
 }
 
 /* INPUTS */
@@ -58,16 +96,29 @@ input[type="text"] {
     font-size: 16px;
 }
 
+.navegacao-container {
+    position: fixed;
+    bottom: 70px;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    /* CENTRALIZA TUDO NO DESKTOP */
+    align-items: center;
+
+    z-index: 999;
+}
+
 /* SETAS DE BAIXO (mobile) */
 .setas-mobile {
     display: none;
     justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
+    gap: 10px;
+    margin-top: 5px;
 }
 
 .seta {
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     border: none;
     color: white;
     font-size: 28px;
@@ -78,49 +129,99 @@ input[type="text"] {
 }
 
 .seta:hover {
-    background: rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.18);
 }
 
 /* SETAS LATERAIS DESKTOP */
 .seta-desktop {
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 22px;         /* 🔥 diminui o tamanho do símbolo */
-  padding: 12px 16px;
-  background: rgba(255,255,255,0.1);
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  z-index: 10;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 22px;
+    /* 🔥 diminui o tamanho do símbolo */
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    z-index: 10;
 }
 
 .seta-desktop.esquerda {
-  left: -300px;
+    left: -300px;
 }
 
 .seta-desktop.direita {
-  right: -300px;
+    right: -300px;
 }
+
+.btn-add {
+    background: #2b6dff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    font-size: 26px;
+    cursor: pointer;
+    margin: 0 5px;
+    display: block;
+    transition: 0.2s;
+}
+
+.btn-add:hover {
+    background: #4c80ff;
+}
+
 .lista-itens {
-  list-style: none;
+    list-style: none;
 }
+
 .checkbox-linha {
-  display: flex;
-  align-items: center;
-  gap: 10px;      /* espaço entre o quadradinho e o nome */
-  cursor: pointer;
-  margin: 6px 0;  /* espaço entre linhas */
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* espaço entre o quadradinho e o nome */
+    cursor: pointer;
+    margin: 6px 0;
+    /* espaço entre linhas */
 }
 
 .checkbox-linha input[type="checkbox"] {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
 }
 
 .riscado {
-  text-decoration: line-through;
-  opacity: 0.6;
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.progresso {
+    margin-top: 35px;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+.barra {
+    width: 100%;
+    height: 12px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.preenchimento {
+    height: 100%;
+    background: #2b6dff;
+    transition: width 0.3s ease;
+}
+
+.texto-progresso {
+    margin-top: 8px;
+    color: #ffffffcc;
+    font-size: 16px;
+    letter-spacing: 0.5px;
 }
 
 /* MOBILE */
@@ -133,11 +234,27 @@ input[type="text"] {
 
     /* CARD RESPONSIVO */
     .card-meta {
-        min-width: unset;  /* 🔥 remove o min-width que quebrava tudo */
+        min-width: unset;
+        /* 🔥 remove o min-width que quebrava tudo */
         width: 100%;
         max-width: 100%;
         padding: 25px;
     }
+
+    .navegacao-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        position: fixed;
+        bottom: 70px;
+        /* fica acima do footer */
+        left: 0;
+        padding: 0 40px;
+        z-index: 300;
+    }
+
 
     /* esconder setas laterais */
     .seta-desktop {
@@ -152,5 +269,11 @@ input[type="text"] {
     .seta {
         font-size: 24px;
         padding: 10px 15px;
+    }
+
+    .btn-add {
+        width: 38px;
+        height: 38px;
+        font-size: 24px;
     }
 }
