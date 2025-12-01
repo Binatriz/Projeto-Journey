@@ -14,10 +14,12 @@
             <div class="card">
                 <h3>Viagem Ford</h3>
                 <p>Progresso geral das metas:</p>
+
                 <div class="progress-bar">
-                    <div class="progress-value" style="width: 70%;"></div>
+                    <div class="progress-value" [style.width.%]="progressoGeral"></div>
                 </div>
-                <p style="margin-top: 8px;">70% completo</p>
+
+                <p style="margin-top: 8px;">{{ progressoGeral }}% completo</p>
             </div>
 
             <!-- CARD 2 – CAR LEVEL -->
@@ -35,8 +37,8 @@
             <!-- CARD 3 – METAS ATIVAS -->
             <div class="card">
                 <h3>Metas Ativas</h3>
-                <p>Total: <strong>6 metas</strong></p>
-                <p>3 concluídas</p>
+                <p>Total: <strong>{{ totalMetas }} metas</strong></p>
+                <p>{{ metasConcluidas }} concluídas</p>
             </div>
 
         </div>
@@ -44,4 +46,3 @@
     </main>
 
 </div>
-
