@@ -1,157 +1,154 @@
-:host {
-    display: block;
-    height: 100vh;
-    overflow-y: auto;
-}
-
 .car-select-page {
-    text-align: center;
-    padding: 40px 20px 120px; 
-    color: #ffffff;
-    font-family: 'Roboto', sans-serif;
-    min-height: 100vh;
-    overflow-y: auto;
+  text-align: center;
+  padding: 40px 20px 120px;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
+  overflow-y: auto;
 }
 
 /* Título */
 .car-select-page h1 {
-    font-size: 34px;
-    font-weight: 600;
-    margin-bottom: 45px;
-    letter-spacing: 1px;
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 45px;
+  letter-spacing: 1px;
 }
 
 .compare-container {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    gap: 80px;        /* distância entre veículo 1 e 2 */
-    flex-wrap: nowrap; /* impede que vire vertical */
-    margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 80px;
+  /* distância entre veículo 1 e 2 */
+  flex-wrap: nowrap;
+  /* impede que vire vertical */
+  margin-top: 40px;
 }
 
 /* BOX DE CADA VEÍCULO */
 .vehicle-box {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 25px;
-    border-radius: 16px;
-    width: 280px;       /* largura fixa para ficarem alinhados */
-    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
-    text-align: left;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 25px;
+  border-radius: 16px;
+  width: 280px;
+  /* largura fixa para ficarem alinhados */
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+  text-align: left;
 }
 
 /* CONTAINER DE DUAS COLUNAS */
 .selects-container {
-    display: flex;
-    justify-content: center;
-    gap: 60px;
-    flex-wrap: wrap;
-    margin-bottom: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 60px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 /* COLUNA DE SELECTS */
 .selects-column {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }
 
 /* CAIXA DOS SELECTS */
 .select-box {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
 
 .select-box label {
-    margin-bottom: 6px;
-    font-size: 15px;
-    color: #cfcfcf;
+  margin-bottom: 6px;
+  font-size: 15px;
+  color: #cfcfcf;
 }
 
 /* Inputs e Selects */
 .select-box select,
 .select-box input {
-    width: 200px;
-    padding: 12px;
-    border-radius: 10px;
-    border: none;
-    background-color: #1f2335;
-    color: #ffffff;
-    font-size: 15px;
-    outline: none;
-    cursor: pointer;
-    transition: 0.2s;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.35);
+  width: 200px;
+  padding: 12px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1f2335;
+  color: #ffffff;
+  font-size: 15px;
+  outline: none;
+  cursor: pointer;
+  transition: 0.2s;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35);
 }
 
 /* Hover */
 .select-box select:hover,
 .select-box input:hover {
-    background-color: #252a40;
+  background-color: #252a40;
 }
 
 /* Foco */
 .select-box select:focus,
 .select-box input:focus {
-    background-color: #2d3350;
-    box-shadow: 0 0 10px rgba(80,120,255,0.4);
+  background-color: #2d3350;
+  box-shadow: 0 0 10px rgba(80, 120, 255, 0.4);
 }
 
 /* Opções */
 .select-box select option {
-    background-color: #1b1e2e;
-    padding: 10px;
+  background-color: #1b1e2e;
+  padding: 10px;
 }
 
 /* CARD DE INFORMAÇÕES */
 .vehicle-info-card {
-    background-color: rgba(255,255,255,0.05);
-    padding: 25px 30px;
-    border-radius: 15px;
-    width: 260px;
-    text-align: left;
-    box-shadow: 0 4px 25px rgba(0,0,0,0.25);
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 25px 30px;
+  border-radius: 15px;
+  width: 260px;
+  text-align: left;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
 }
 
 .vehicle-info-card h2 {
-    font-size: 22px;
-    margin-bottom: 15px;
-    font-weight: 600;
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
 
 .vehicle-info-card p {
-    margin: 6px 0;
-    font-size: 15px;
+  margin: 6px 0;
+  font-size: 15px;
 }
 
 
 .compare-btn {
-    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
-    color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    padding: 14px 40px;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: 0.25s ease-in-out;
-    margin-top: 25px;
+  background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: 0.25s ease-in-out;
+  margin-top: 25px;
 
 }
 
 /* Hover */
 .compare-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(30, 64, 175, 0.55);
-    background: linear-gradient(135deg, #60a5fa, #1d4ed8);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(30, 64, 175, 0.55);
+  background: linear-gradient(135deg, #60a5fa, #1d4ed8);
 }
 
 /* Clique */
 .compare-btn:active {
-    transform: scale(0.97);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+  transform: scale(0.97);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
 }
 
 .compare-modal {
@@ -171,7 +168,7 @@
 .modal-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
 }
 
 /* CAIXA CENTRAL */
@@ -183,13 +180,20 @@
   width: 900px;
   max-width: 95%;
   color: #fff;
-  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.5);
   animation: fadeUp .25s ease-out;
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* FECHAR */
@@ -226,7 +230,7 @@
   padding: 25px;
   border-radius: 16px;
   width: 300px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
   text-align: center;
 }
 
@@ -242,7 +246,7 @@
 .vehicle-attr {
   margin: 8px 0;
   font-size: 15px;
-  color:white;
+  color: white;
   text-align: left;
 }
 
@@ -256,7 +260,7 @@
   background: #141a27;
   color: white;
   outline: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 .card label {
@@ -272,42 +276,56 @@
   .modal-content {
     padding: 20px;
   }
+
   .card {
     width: 90%;
   }
+
   .modal-title {
     font-size: 22px;
   }
 }
+
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {
-    .selects-container {
-        gap: 30px;
-    }
+  .selects-container {
+    gap: 30px;
+  }
+
+  :host {
+    display: block;
+    height: 100vh;
+    overflow-y: auto;
+  }
+
 }
 
 @media (max-width: 600px) {
-    .vehicle-info-card {
-        width: 90%;
-    }
+  .vehicle-info-card {
+    width: 90%;
+  }
 
-    .select-box select,
-    .select-box input {
-        width: 100%;
-    }
+  .select-box select,
+  .select-box input {
+    width: 100%;
+  }
 
-    /* Diminui o tamanho do modal para não ocupar a tela toda */
+  /* Diminui o tamanho do modal para não ocupar a tela toda */
   .modal-content {
     width: 90%;
-    max-height: 70vh !important;   /* Impede que cubra a tela inteira */
-    overflow-y: auto;              /* Habilita scroll interno */
+    max-height: 70vh !important;
+    /* Impede que cubra a tela inteira */
+    overflow-y: auto;
+    /* Habilita scroll interno */
     padding: 18px 16px;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%) scale(0.95);  /* centralizado e menor */
+    transform: translate(-50%, -50%) scale(0.95);
+    /* centralizado e menor */
     border-radius: 12px;
   }
-.modal-content {
+
+  .modal-content {
     position: fixed !important;
     top: 50% !important;
     left: 50% !important;
