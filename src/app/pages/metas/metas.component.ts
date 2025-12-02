@@ -104,7 +104,7 @@ export class MetasComponent {
   }
 
   addMeta() {
-    if (this.metas.length >= 10) {
+    if (this.metas.length >= 100) {
     alert("Você atingiu o limite máximo de 10 metas.");
     return;
   }

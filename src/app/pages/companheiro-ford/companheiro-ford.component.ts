@@ -14,48 +14,83 @@ import { NgFor, NgIf } from '@angular/common';
 })
 
 export class CompanheiroFordComponent implements OnInit {
-
-  // MODELOS (lista da FIPE)
   modelos: any[] = [];
-  selectedModelo: any = null;
 
-  anos: any[] = [];
-  selectedAno: string | null = null;
+  // VEÍCULO 1
+  selectedModelo1: any = null;
+  selectedAno1: string | null = null;
+  anos1: any[] = [];
+  carInfo1: any = null;
 
-  // INFORMAÇÕES COMPLETAS DO VEÍCULO
-  carInfo: any = null;
+  // VEÍCULO 2
+  selectedModelo2: any = null;
+  selectedAno2: string | null = null;
+  anos2: any[] = [];
+  carInfo2: any = null;
 
-  constructor(private api: AuthService) {}
+  constructor(private api: AuthService) { }
 
   ngOnInit(): void {
     this.loadModelos();
   }
 
-  /*Carregar modelos da Ford */
+  /* ------------ MODELOS ------------ */
   loadModelos() {
     this.api.getModelosFord().subscribe((data: any) => {
       this.modelos = data.modelos;
     });
   }
 
-  /* Carregar anos */
-  onModeloChange() {
-    this.selectedAno = null;
-    this.carInfo = null;
+  showCompareModal = false;
 
-    this.api.getAnosModelo(this.selectedModelo.codigo)
-      .subscribe((data: any) => {
-        this.anos = data;
-      });
+  openCompareModal() {
+    this.showCompareModal = true;
   }
 
-  /* informações do veículo */
-  onAnoChange() {
-    if (!this.selectedModelo || !this.selectedAno) return;
-
-    this.api.getInfoVeiculo(this.selectedModelo.codigo, this.selectedAno)
-      .subscribe((data: any) => {
-        this.carInfo = data;
-      });
+  closeCompareModal() {
+    this.showCompareModal = false;
   }
+
+  /* ------------ QUANDO MUDA O MODELO (1 ou 2) ------------ */
+  onModeloChange(box: number) {
+    if (box === 1) {
+      this.selectedAno1 = null;
+      this.carInfo1 = null;
+
+      this.api.getAnosModelo(this.selectedModelo1.codigo)
+        .subscribe((data: any) => {
+          this.anos1 = data;
+        });
+
+    } else {
+      this.selectedAno2 = null;
+      this.carInfo2 = null;
+
+      this.api.getAnosModelo(this.selectedModelo2.codigo)
+        .subscribe((data: any) => {
+          this.anos2 = data;
+        });
+    }
+  }
+
+  /* ------------ QUANDO MUDA O ANO (1 ou 2) ------------ */
+  onAnoChange(box: number) {
+    if (box === 1) {
+      if (!this.selectedModelo1 || !this.selectedAno1) return;
+
+      this.api.getInfoVeiculo(this.selectedModelo1.codigo, this.selectedAno1)
+        .subscribe((data: any) => {
+          this.carInfo1 = data;
+        });
+
+    } else {
+      if (!this.selectedModelo2 || !this.selectedAno2) return;
+
+      this.api.getInfoVeiculo(this.selectedModelo2.codigo, this.selectedAno2)
+        .subscribe((data: any) => {
+          this.carInfo2 = data;
+        });
+    }
+  }
+
 }

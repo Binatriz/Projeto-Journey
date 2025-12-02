@@ -13,6 +13,25 @@
     letter-spacing: 1px;
 }
 
+.compare-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 80px;        /* distância entre veículo 1 e 2 */
+    flex-wrap: nowrap; /* impede que vire vertical */
+    margin-top: 40px;
+}
+
+/* BOX DE CADA VEÍCULO */
+.vehicle-box {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 25px;
+    border-radius: 16px;
+    width: 280px;       /* largura fixa para ficarem alinhados */
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.25);
+    text-align: left;
+}
+
 /* CONTAINER DE DUAS COLUNAS */
 .selects-container {
     display: flex;
@@ -99,6 +118,159 @@
 }
 
 
+.compare-btn {
+    background: linear-gradient(135deg, #3b82f6, #1e3a8a);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.25s ease-in-out;
+    margin-top: 25px;
+
+}
+
+/* Hover */
+.compare-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px rgba(30, 64, 175, 0.55);
+    background: linear-gradient(135deg, #60a5fa, #1d4ed8);
+}
+
+/* Clique */
+.compare-btn:active {
+    transform: scale(0.97);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+}
+
+.compare-modal {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.compare-modal.active {
+  display: flex;
+}
+
+/* FUNDO ESCURO */
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+}
+
+/* CAIXA CENTRAL */
+.modal-content {
+  position: relative;
+  background: #0e101d;
+  padding: 30px 40px;
+  border-radius: 18px;
+  width: 900px;
+  max-width: 95%;
+  color: #fff;
+  box-shadow: 0 0 25px rgba(0,0,0,0.5);
+  animation: fadeUp .25s ease-out;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* FECHAR */
+.close-btn {
+  position: absolute;
+  right: 20px;
+  top: 15px;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* TÍTULO */
+.modal-title {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* CONTAINER DOS VEÍCULOS */
+.modal-vehicles {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* CARD DOS VEÍCULOS */
+.card {
+  background: #1b263b;
+  padding: 25px;
+  border-radius: 16px;
+  width: 300px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.25);
+  text-align: center;
+}
+
+/* TÍTULO DO CARD */
+.vehicle-title {
+  font-size: 20px;
+  margin-bottom: 18px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* TEXTOS */
+.vehicle-attr {
+  margin: 8px 0;
+  font-size: 15px;
+  color:white;
+  text-align: left;
+}
+
+/* SELECTS */
+.card select {
+  width: 100%;
+  margin: 5px 0 15px;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #141a27;
+  color: white;
+  outline: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.card label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  text-align: left;
+  display: block;
+  color: #ffffff;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 700px) {
+  .modal-content {
+    padding: 20px;
+  }
+  .card {
+    width: 90%;
+  }
+  .modal-title {
+    font-size: 22px;
+  }
+}
 /* RESPONSIVIDADE */
 @media (max-width: 900px) {
     .selects-container {

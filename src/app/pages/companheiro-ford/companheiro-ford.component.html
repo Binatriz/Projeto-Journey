@@ -12,10 +12,7 @@
       <div class="select-box">
         <label for="modeloSelect">Modelos</label>
 
-        <select
-          id="modeloSelect"
-          [(ngModel)]="selectedModelo"
-          (change)="onModeloChange()">
+        <select id="modeloSelect" [(ngModel)]="selectedModelo1" (change)="onModeloChange(1)">
 
           <option [ngValue]="null" disabled selected>Selecione</option>
 
@@ -27,17 +24,14 @@
       </div>
 
       <!--(DEPENDE DO MODELO) -->
-      <div class="select-box" *ngIf="selectedModelo">
+      <div class="select-box" *ngIf="selectedModelo1">
         <label for="anoSelect">Ano</label>
 
-        <select
-          id="anoSelect"
-          [(ngModel)]="selectedAno"
-          (change)="onAnoChange()">
+        <select id="anoSelect" [(ngModel)]="selectedAno1" (change)="onAnoChange(1)">
 
           <option [ngValue]="null" disabled selected>Selecione</option>
 
-          <option *ngFor="let ano of anos" [value]="ano.codigo">
+          <option *ngFor="let ano of anos1" [value]="ano.codigo">
             {{ ano.nome }}
           </option>
 
@@ -47,19 +41,78 @@
     </div>
 
     <!-- COLUNA DIREITA (INFOS DO VEÍCULO) -->
-    <div class="info-column" *ngIf="carInfo">
+    <div class="info-column" *ngIf="carInfo1">
       <div class="vehicle-info">
         <h2>Informações do veículo</h2>
 
         <p><strong>Marca:</strong> Ford</p>
-        <p><strong>Modelo:</strong> {{ carInfo.Modelo }}</p>
-        <p><strong>Ano:</strong> {{ carInfo.AnoModelo }}</p>
-        <p><strong>Combustível:</strong> {{ carInfo.Combustivel }}</p>
-        <p><strong>Valor FIPE:</strong> {{ carInfo.Valor }}</p>
+        <p><strong>Modelo:</strong> {{ carInfo1.Modelo }}</p>
+        <p><strong>Ano:</strong> {{ carInfo1.AnoModelo }}</p>
+        <p><strong>Combustível:</strong> {{ carInfo1.Combustivel }}</p>
+        <p><strong>Valor FIPE:</strong> {{ carInfo1.Valor }}</p>
       </div>
+      <button (click)="openCompareModal()" class="compare-btn">Comparar</button>
     </div>
 
   </div>
 
+
+  <div class="compare-modal" [class.active]="showCompareModal">
+
+  <div class="modal-overlay" (click)="closeCompareModal()"></div>
+
+  <div class="modal-content">
+
+    <button class="close-btn" (click)="closeCompareModal()">✕</button>
+
+    <h2 class="modal-title">Comparação dos Veículos</h2>
+
+    <div class="modal-vehicles">
+
+      <!-- CARD VEÍCULO 1 -->
+      <div class="modal-vehicle card">
+        <h3 class="vehicle-title"> Veículo 1 </h3>
+
+        <div class="vehicle-attr"><strong>Veículo:</strong> {{ carInfo1?.Modelo }}</div>
+        <div class="vehicle-attr"><strong>Ano:</strong> {{ carInfo1?.AnoModelo }}</div>
+        <div class="vehicle-attr"><strong>Combustível:</strong> {{ carInfo1?.Combustivel }}</div>
+        <div class="vehicle-attr"><strong>FIPE:</strong> {{ carInfo1?.Valor }}</div>
+      </div>
+
+      <!-- CARD VEÍCULO 2 -->
+      <div class="modal-vehicle card">
+
+        <h3 class="vehicle-title">Escolher Veículo 2</h3>
+
+        <label>Modelo</label>
+        <select aria-label="Model" [(ngModel)]="selectedModelo2" (change)="onModeloChange(2)">
+          <option [ngValue]="null">Selecione</option>
+          <option *ngFor="let modelo of modelos" [ngValue]="modelo">
+            {{ modelo.nome }}
+          </option>
+        </select>
+
+        <label *ngIf="selectedModelo2">Ano</label>
+        <select aria-label="Modelo" *ngIf="selectedModelo2"
+                [(ngModel)]="selectedAno2"
+                (change)="onAnoChange(2)">
+          <option [ngValue]="null">Selecione</option>
+          <option *ngFor="let ano of anos2" [value]="ano.codigo">
+            {{ ano.nome }}
+          </option>
+        </select>
+
+        <div *ngIf="carInfo2" class="vehicle-info">
+          <div class="vehicle-attr"><strong>Modelo:</strong> {{ carInfo2.Modelo }}</div>
+          <div class="vehicle-attr"><strong>Ano:</strong> {{ carInfo2.AnoModelo }}</div>
+          <div class="vehicle-attr"><strong>Combustível:</strong> {{ carInfo2.Combustivel }}</div>
+          <div class="vehicle-attr"><strong>FIPE:</strong> {{ carInfo2.Valor }}</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
 
 </div>
