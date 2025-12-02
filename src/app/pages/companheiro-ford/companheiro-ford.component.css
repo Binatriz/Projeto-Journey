@@ -287,4 +287,39 @@
     .select-box input {
         width: 100%;
     }
+
+    /* Diminui o tamanho do modal para não ocupar a tela toda */
+  .modal-content {
+    width: 90%;
+    max-height: 70vh !important;   /* Impede que cubra a tela inteira */
+    overflow-y: auto;              /* Habilita scroll interno */
+    padding: 18px 16px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);  /* centralizado e menor */
+    border-radius: 12px;
+  }
+.modal-content {
+    position: fixed !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) scale(0.95) !important;
+    width: 90%;
+    max-height: 70vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    padding: 18px 16px;
+  }
+
+  /* Deixa os cards empilhados para caber na tela */
+  .modal-vehicles {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .modal-vehicle {
+    width: 100%;
+    max-width: 320px;
+  }
 }
