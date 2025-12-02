@@ -3,11 +3,15 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { CompanheiroFordComponent } from './pages/companheiro-ford/companheiro-ford.component';
 import { MetasComponent } from './pages/metas/metas.component';
 import { LoginComponent } from './pages/login/login.component';
+import { authGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
-    {path: "", pathMatch: 'full', redirectTo: 'login'},
+    
     {path: 'login', component: LoginComponent},
-    {path:'dashboard', component: DashboardComponent},
-    {path: 'companheiro-ford', component: CompanheiroFordComponent},
-    {path: 'metas', component: MetasComponent}
+
+    {path:'dashboard', component: DashboardComponent, canActivate: [authGuard]},
+    {path: 'companheiro-ford', component: CompanheiroFordComponent, canActivate: [authGuard]},
+    {path: 'metas', component: MetasComponent, canActivate: [authGuard]},
+
+    {path: "", pathMatch: 'full', redirectTo: 'login'}
 ];

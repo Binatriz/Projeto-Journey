@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { tap } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { Usuario } from '../models/usuario';
+import { Router } from '@angular/router';
 
 export interface Item {
   texto: string;
@@ -14,6 +16,8 @@ export interface Meta {
   editandoTitulo?: boolean;
 }
 
+const key = "auth-user";
+
 @Injectable({
   providedIn: 'root'
 })
@@ -24,9 +28,27 @@ export class MetasService {
 
   metas: Meta[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
- carregarMetas() {
+  login(usuario:Pick<Usuario, 'nome' | 'senha'>): Observable<Usuario>{
+    return this.http.post<Usuario>(`${this.apiUrl}/login`, usuario).pipe(
+      tap(response => {
+        sessionStorage.setItem(key, JSON.stringify(response));
+      })
+    );
+  }
+
+  logout():void{
+    sessionStorage.removeItem(key);
+    this.router.navigate(['/login']);
+  }
+
+  isLogged():boolean{
+    const user = sessionStorage.getItem(key);
+    return user ? true : false;
+  }
+
+  carregarMetas() {
     this.http.get<{ metas: Meta[] }>(this.baseUrl).subscribe({
       next: (res) => {
         console.log("📥 Metas carregadas:", res.metas);

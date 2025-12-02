@@ -19,18 +19,26 @@
                 </div>
 
                 <nav class="header-nav">
-                    <!-- botão Perfil que abre um dropdown abaixo (similar à offcanvas do menu) -->
+
                     <div class="dropdown">
                         <button class="profile-btn dropdown-toggle" type="button" id="perfilDropdown"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             Perfil
                         </button>
+
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="perfilDropdown">
                             <li class="dropdown-item profile-item-name">Beatriz</li>
                             <li class="dropdown-item profile-item-level">Nível Ford: Platinum</li>
                         </ul>
                     </div>
+
+                    <!-- BOTÃO DE LOGOUT -->
+                    <button class="logout-btn" (click)="logout()">
+                        Sair
+                    </button>
+
                 </nav>
+
 
                 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel">

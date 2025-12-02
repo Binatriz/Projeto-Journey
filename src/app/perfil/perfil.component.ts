@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { MetasService } from '../services/metas.service';
 
 @Component({
   selector: 'app-perfil',
@@ -11,7 +12,13 @@ import { RouterLink } from '@angular/router';
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent {
-
+  
+  constructor(public metasService: MetasService) {}
+  
+    logout():void{
+      this.metasService.logout();
+    }
+  
   // Dados do usuário (virão do backend depois)
   userName: string = "Beatriz";
   carLevel: string = "Ford Focus";

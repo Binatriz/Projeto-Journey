@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
+import { MetasService } from '../../services/metas.service';
 
 @Component({
   selector: 'app-login',
@@ -20,17 +21,23 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  nome = '';
-  senha = '';
-  hide = signal(true);
 
-  constructor(private router: Router) {}
+  usuario = {
+    nome:'',
+    senha:''
+  }
 
-  login() {
-    if (this.nome !== 'admin' || this.senha !== '123456') {
-      alert('Nome ou senha inválidos');
-    } else {
-      this.router.navigate(['/dashboard']);
-    }
+  constructor(private metasService: MetasService, private router: Router) { }
+
+  login(){
+    this.metasService.login(this.usuario).subscribe({
+      next:(response)=>{
+        console.log("Entrou");
+        this.router.navigate(['/dashboard']);
+      },
+      error:(err)=>{
+        alert("Usuario ou Senha incorretos")
+      }
+    })
   }
 }
