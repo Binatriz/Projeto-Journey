@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { tap } from 'rxjs';
 
 export interface Item {
   texto: string;
@@ -17,51 +19,64 @@ export interface Meta {
 })
 export class MetasService {
 
-  metas: Meta[] = [
-    {
-      titulo: 'Itens para não esquecer na viagem',
-      texto: 'Checklist rápido para levar na mala:',
-      editandoTitulo: false,
-      itens: [
-        { texto: 'Documentos pessoais', feito: false },
-        { texto: 'Cartões e dinheiro', feito: false },
-        { texto: 'Carregador e powerbank', feito: false },
-        { texto: 'Roupas essenciais', feito: false },
-        { texto: 'Itens de higiene', feito: false },
-        { texto: 'Remédios necessários', feito: false }
-      ]
-    },
-    {
-      titulo: 'Organizar rotina semanal',
-      texto: 'Tarefas importantes para manter a semana produtiva:',
-      editandoTitulo: false,
-      itens: [
-        { texto: 'Planejar horários de estudo/trabalho', feito: false },
-        { texto: 'Separar prioridades da semana', feito: false }
-      ]
-    },
-    {
-      titulo: 'Estudos',
-      texto: '',
-      editandoTitulo: false,
-      itens: [
-        { texto: 'Estudar 1h por dia', feito: false },
-        { texto: 'Organizar materiais da faculdade', feito: false },
-        { texto: 'Assistir aulas atrasadas', feito: false }
-      ]
-    }
-  ];
+  private apiUrl = 'http://localhost:3001';
+  private baseUrl = 'http://localhost:3001/metas';
 
-  // progresso de uma meta
+  metas: Meta[] = [];
+
+  constructor(private http: HttpClient) {}
+
+ carregarMetas() {
+    this.http.get<{ metas: Meta[] }>(this.baseUrl).subscribe({
+      next: (res) => {
+        console.log("📥 Metas carregadas:", res.metas);
+        this.metas = res.metas;
+      },
+      error: (err) => {
+        console.error("❌ Erro ao carregar metas:", err);
+      }
+    });
+  }
+  // ======= SALVAR NO SERVIDOR =======
+  salvarMetas() {
+    return this.http.post(`${this.apiUrl}/metas`, { metas: this.metas })
+      .subscribe(() => {
+        console.log("Metas salvas na API");
+      });
+  }
+
+  // ======= MANIPULAÇÃO LOCAL =======
+
+  adicionarMeta(meta: Meta) {
+    this.metas.push(meta);
+    this.salvarMetas();
+  }
+
+  marcarItem(metaIndex: number, itemIndex: number) {
+    const item = this.metas[metaIndex].itens[itemIndex];
+    item.feito = !item.feito;
+    this.salvarMetas();
+  }
+
+  editarTitulo(metaIndex: number, novoTitulo: string) {
+    this.metas[metaIndex].titulo = novoTitulo;
+    this.salvarMetas();
+  }
+
+  editarTexto(metaIndex: number, novoTexto: string) {
+    this.metas[metaIndex].texto = novoTexto;
+    this.salvarMetas();
+  }
+
+  // ======= PROGRESSOS =======
   getProgresso(index: number): number {
     const itens = this.metas[index].itens;
-    if (itens.length === 0) return 0;
+    if (!itens || itens.length === 0) return 0;
 
     const feitos = itens.filter(i => i.feito).length;
     return Math.round((feitos / itens.length) * 100);
   }
 
-  // progresso TOTAL (para o dashboard)
   getProgressoGeral(): number {
     if (this.metas.length === 0) return 0;
 
@@ -71,5 +86,4 @@ export class MetasService {
 
     return Math.round(soma / this.metas.length);
   }
-
 }

@@ -1,15 +1,23 @@
+:host {
+    display: block;
+    height: 100vh;
+    overflow-y: auto !important
+}
+
 .main-wrapper {
     width: 100%;
     padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    
+    min-height: 100vh;
+    overflow-y: auto !important;
 }
 
 .content {
     flex: 1;
     padding: 20px 30px;
+    overflow-y: visible;
 }
 
 .content h2 {

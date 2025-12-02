@@ -1,8 +1,16 @@
+:host {
+    display: block;
+    height: 100vh;
+    overflow-y: auto;
+}
+
 .car-select-page {
     text-align: center;
     padding: 40px 20px 120px; 
     color: #ffffff;
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+    overflow-y: auto;
 }
 
 /* Título */

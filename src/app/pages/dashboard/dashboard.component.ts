@@ -9,8 +9,13 @@ import { MetasService } from '../../services/metas.service';
   styleUrl: './dashboard.component.css'
 })
 
-export class DashboardComponent {
-  constructor(public metasService: MetasService) { }
+export class DashboardComponent  implements OnInit {
+
+  constructor(public metasService: MetasService) {}
+
+  ngOnInit(): void {
+    this.metasService.carregarMetas();
+  }
 
   get metas() {
     return this.metasService.metas;
@@ -19,6 +24,7 @@ export class DashboardComponent {
   getProgresso(index: number) {
     return this.metasService.getProgresso(index);
   }
+
   get progressoGeral() {
     return this.metasService.getProgressoGeral();
   }
@@ -33,4 +39,3 @@ export class DashboardComponent {
     ).length;
   }
 }
-

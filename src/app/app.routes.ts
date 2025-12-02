@@ -5,9 +5,9 @@ import { MetasComponent } from './pages/metas/metas.component';
 import { LoginComponent } from './pages/login/login.component';
 
 export const routes: Routes = [
-    {path: "", pathMatch: 'full', redirectTo: 'dashboard'},
+    {path: "", pathMatch: 'full', redirectTo: 'login'},
+    {path: 'login', component: LoginComponent},
     {path:'dashboard', component: DashboardComponent},
     {path: 'companheiro-ford', component: CompanheiroFordComponent},
-    {path: 'metas', component: MetasComponent},
-    {path: 'login', component: LoginComponent}
+    {path: 'metas', component: MetasComponent}
 ];
