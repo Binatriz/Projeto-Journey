@@ -31,7 +31,7 @@ export class MetasComponent implements OnInit {
   constructor(public metasService: MetasService) { }
 
   ngOnInit() {
-    this.metasService.carregarMetas();
+    //
   }
   // 👉 Acesso direto às metas do service
   get metas() {

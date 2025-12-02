@@ -13,8 +13,8 @@ export class DashboardComponent  implements OnInit {
 
   constructor(public metasService: MetasService) {}
 
-  ngOnInit(): void {
-    this.metasService.carregarMetas();
+  ngOnInit() {
+    //
   }
 
   get metas() {
