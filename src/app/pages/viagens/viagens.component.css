@@ -1,8 +1,11 @@
+
 .viagem-page {
   text-align: center;
   padding: 40px 20px;
+  padding-bottom: 80px; /* espaço para o footer */
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
+  padding: 40px 20px 120px; /* igual ao da outra página */
 }
 
 /* Título */
@@ -104,4 +107,23 @@
   max-width: 500px;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+}
+
+@media (max-width: 480px) {
+  .viagem-page h1 {
+    font-size: 26px;
+  }
+
+  .intro-text {
+    font-size: 14px;
+    margin-bottom: 30px;
+  }
+
+  .select-box select {
+    width: 100%;
+  }
+
+  .resultado-container {
+    padding: 18px;
+  }
 }

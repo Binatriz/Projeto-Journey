@@ -13,7 +13,7 @@ export const routes: Routes = [
     {path:'dashboard', component: DashboardComponent, canActivate: [authGuard]},
     {path: 'companheiro-ford', component: CompanheiroFordComponent, canActivate: [authGuard]},
     {path: 'metas', component: MetasComponent, canActivate: [authGuard]},
-    {path: 'viagens', component:ViagensComponent},
+    {path: 'viagens', component:ViagensComponent, canActivate: [authGuard]},
 
     {path: "", pathMatch: 'full', redirectTo: 'login'}
 ];

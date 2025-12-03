@@ -1,36 +1,35 @@
-
-/* ====== WRAPPER GLOBAL ====== */
 .main-wrapper {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
 }
 
 /* ====== HEADER ====== */
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 15px 25px;
-    background: rgba(255, 255, 255, 0.06);
-    border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 25px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 10px;
 }
 
 .navbar.bg-body-tertiary.fixed-top {
   background: rgba(30, 30, 44, 1) !important;
- 
-  
+
+
   border-radius: 10px;
 }
 
 /* Nome do sistema */
 .logo {
-    font-size: 22px;
-    font-weight: bold;
-    margin-right: 40px; /* espaço confortável */
+  font-size: 22px;
+  font-weight: bold;
+  margin-right: 40px;
+  /* espaço confortável */
 }
 
 .logo-area {
@@ -39,11 +38,12 @@
   gap: 12px;
   max-width: 100%;
 }
+
 /* tamanho e ajuste da logo */
 .ford-logo {
-    height: 32px;
-    width: auto;
-    flex: 0 0 auto;
+  height: 32px;
+  width: auto;
+  flex: 0 0 auto;
 }
 
 /* texto ao lado da logo */
@@ -54,7 +54,8 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 220px; /* limita largura inicial para evitar empurrar conteúdo */
+  max-width: 220px;
+  /* limita largura inicial para evitar empurrar conteúdo */
   flex: 1 1 auto;
 }
 
@@ -63,9 +64,10 @@
   display: flex;
   align-items: center;
 }
+
 .dropdown-menu {
   background: rgba(255, 255, 255, 0.06) !important;
-  border: 1px solid rgba(255,255,255,0.06);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   min-width: 200px;
   padding: 8px 0;
   margin-top: 8px;
@@ -73,7 +75,7 @@
 }
 
 .dropdown-item {
-  color: rgba(255,255,255,0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
   background: transparent;
   padding: 8px 16px;
 }
@@ -89,7 +91,7 @@
 
 .profile-item-level {
   font-size: 13px;
-  color: rgba(255,255,255,0.75) !important;
+  color: rgba(255, 255, 255, 0.75) !important;
 }
 
 /* mantém o botão Perfil pequeno e alinhado */
@@ -101,30 +103,35 @@
   color: #fff;
   border: none;
 }
-.profile-btn::after { /* seta do dropdown adaptada para ficar clara */
+
+.profile-btn::after {
+  /* seta do dropdown adaptada para ficar clara */
   filter: invert(1) brightness(2);
 }
 
 .logout-btn {
-    padding: 8px 16px;
-    margin-left: 12px;
-    background: rgba(255, 80, 80, 0.8);
-    border: none;
-    border-radius: 8px;
-    color: #fff;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 6px 12px;
+  margin-left: 12px;
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  transition: 0.3s;
 }
 
 .logout-btn:hover {
-    background: rgba(255, 60, 60, 1);
-    transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.5);
+  color: black;
 }
+
 .navbar .container-fluid {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* mantém perfil à direita */
+  justify-content: space-between;
+  /* mantém perfil à direita */
   gap: 12px;
   padding-left: 12px;
   padding-right: 12px;
@@ -149,7 +156,8 @@
 .left-group {
   display: flex;
   align-items: center;
-  gap: 12px; /* distância entre o botão e a logo */
+  gap: 12px;
+  /* distância entre o botão e a logo */
 }
 
 /* garante que o toggler não quebre linha em telas pequenas */
@@ -161,36 +169,39 @@
 }
 
 .profile-btn {
-    padding: 8px 18px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: 0.3s;
+  padding: 8px 18px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  flex-shrink: 0 !important;
+  transition: 0.3s;
 }
 
 .profile-btn:hover {
-    background: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /* ====== LAYOUT ====== */
 .layout {
-    display: flex;
-    width: 100%;
-    margin-top: 20px;
+  display: flex;
+  width: 100%;
+  margin-top: 20px;
 }
+
 .offcanvas.offcanvas-start {
   background: rgba(30, 30, 44, 1) !important;
   color: #fff;
-  top: 64px !important; /* ajuste se a navbar tiver outra altura */
+  top: 64px !important;
+  /* ajuste se a navbar tiver outra altura */
   height: calc(100vh - 64px) !important;
-  border-right: 1px solid rgba(255,255,255,1);
+  border-right: 1px solid rgba(255, 255, 255, 1);
 }
 
 .offcanvas .offcanvas-header {
   padding-top: 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid rgba(255,255,255,1);
+  border-bottom: 1px solid rgba(255, 255, 255, 1);
 }
 
 .offcanvas .offcanvas-body {
@@ -199,31 +210,31 @@
 
 .offcanvas .offcanvas-title,
 .offcanvas .nav-link {
-  color: rgba(255,255,255,0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 
 
 .footer {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px 40px;
-    font-size: 14px;
-    color: rgba(255, 255, 255, 0.7);
-    text-align: center;
-    background: rgba(30, 30, 44, 1);
-    position: fixed;
-    bottom: 0;
-    left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px 40px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  background: rgba(30, 30, 44, 1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
 
-    /* garante sobreposição visível e altura conhecida */
-    z-index: 1050;
-    height: 56px;
+  /* garante sobreposição visível e altura conhecida */
+  z-index: 1050;
+  height: 56px;
 }
 
 .footer-page {
-    white-space: nowrap; /* impede quebra de linha */
+  white-space: normal;
 }
 
 @media (max-width: 576px) {
@@ -231,13 +242,16 @@
     font-size: 16px;
     max-width: 140px;
   }
+
   .ford-logo {
     height: 26px;
   }
+
   .profile-btn {
     padding: 6px 10px;
     font-size: 14px;
   }
+
   /* empilha o conteúdo do header se necessário */
   .navbar .container-fluid {
     gap: 6px;
@@ -245,6 +259,7 @@
 }
 
 @media (max-width: 380px) {
+
   /* mantém tudo em uma linha e permite que itens encolham corretamente */
   .navbar .container-fluid {
     flex-wrap: nowrap;
@@ -256,6 +271,7 @@
   .ford-logo {
     height: 22px;
   }
+
   .logo-text {
     font-size: 14px;
     max-width: 110px;
@@ -276,6 +292,7 @@
     margin-left: auto;
     display: flex;
     align-items: center;
+
   }
 
   /* reduz padding do perfil para economizar espaço */
@@ -288,5 +305,63 @@
   .logo-area,
   .left-group {
     min-width: 0;
+  }
+}
+
+@media (max-width: 915px) {
+
+  .logout-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .profile-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .logo-text {
+    font-size: 14px;
+    max-width: 110px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .header-nav {
+    margin-left: auto !important;
+    flex-shrink: 0 !important;
+  }
+}
+
+@media (max-width: 480px) and (min-width: 381px) {
+
+  .logo-text {
+    font-size: 15px;
+    max-width: 130px;
+  }
+
+  .profile-btn,
+  .logout-btn {
+    padding: 6px 10px;
+    font-size: 13px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  /* mantém tudo na mesma linha */
+  .navbar .container-fluid {
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 6px;
+  }
+
+  /* garante que Perfil e Sair não quebrem a linha */
+  .header-nav {
+    margin-left: auto;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
 }
