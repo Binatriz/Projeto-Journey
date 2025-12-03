@@ -1,0 +1,54 @@
+<app-perfil></app-perfil>
+<div class="viagem-page">
+
+  <h1>Planeje sua Próxima Jornada</h1>
+
+  <p class="intro-text">
+    Escolha seu modelo Ford e receba recomendações personalizadas de viagens
+    baseadas no estilo do seu carro.
+  </p>
+
+  <!-- SELECTS -->
+  <div class="selects-container">
+
+    <!-- MODELO -->
+    <div class="select-box">
+      <label for="modeloSelect">Modelo Ford</label>
+
+      <select id="modeloSelect"
+              aria-label="ModeloFord"
+              [(ngModel)]="selectedModelo"
+              (change)="onModeloChange()">
+
+        <option [ngValue]="null">Selecione</option>
+
+        <option *ngFor="let m of modelos" [ngValue]="m">
+          {{ m.nome }}
+        </option>
+
+      </select>
+    </div>
+
+  </div>
+
+  <!-- RESULTADO FINAL -->
+  <div class="resultado-container" *ngIf="sugestao">
+
+    <h2>{{ sugestao.titulo }}</h2>
+
+    <p class="descricao-text">{{ sugestao.descricao }}</p>
+
+    <h3>Destinos recomendados:</h3>
+
+    <ul>
+      <li *ngFor="let d of sugestao.destinosIndicados">{{ d }}</li>
+    </ul>
+
+    <!-- IMAGEM -->
+    <div class="imagem-container" *ngIf="sugestao.imagem">
+      <img [src]="sugestao.imagem" alt="Sugestão de viagem">
+    </div>
+
+  </div>
+
+</div>

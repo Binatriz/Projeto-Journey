@@ -4,6 +4,7 @@ import { CompanheiroFordComponent } from './pages/companheiro-ford/companheiro-f
 import { MetasComponent } from './pages/metas/metas.component';
 import { LoginComponent } from './pages/login/login.component';
 import { authGuard } from './guards/auth.guard';
+import { ViagensComponent } from './pages/viagens/viagens.component';
 
 export const routes: Routes = [
     
@@ -12,6 +13,7 @@ export const routes: Routes = [
     {path:'dashboard', component: DashboardComponent, canActivate: [authGuard]},
     {path: 'companheiro-ford', component: CompanheiroFordComponent, canActivate: [authGuard]},
     {path: 'metas', component: MetasComponent, canActivate: [authGuard]},
+    {path: 'viagens', component:ViagensComponent},
 
     {path: "", pathMatch: 'full', redirectTo: 'login'}
 ];
