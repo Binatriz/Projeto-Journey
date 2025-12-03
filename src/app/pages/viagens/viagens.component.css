@@ -5,6 +5,7 @@
   padding-bottom: 80px; /* espaço para o footer */
   color: #ffffff;
   font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
   padding: 40px 20px 120px; /* igual ao da outra página */
 }
 
