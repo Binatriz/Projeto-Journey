@@ -15,31 +15,21 @@
 
         <mat-form-field class="form-field">
           <mat-label>Nome</mat-label>
-          <input
-            id="input-nome"
-            matInput
-            aria-label="Nome"
-            type="text"
-            [(ngModel)]="usuario.nome"
-            name="nome"
-            autocomplete="name"
-            required
-          />
+          <input id="input-nome" matInput aria-label="Nome" type="text" [(ngModel)]="usuario.nome" name="nome"
+            autocomplete="name" required />
         </mat-form-field>
 
         <mat-form-field class="form-field">
           <mat-label>Senha</mat-label>
-          <input
-            id="input-senha"
-            matInput
-            aria-label="Senha"
-            type="password"
-            [(ngModel)]="usuario.senha"
-            name="senha"
-            autocomplete="current-password"
-            required
-          />
+          <input id="input-senha" matInput aria-label="Senha" type="password" [(ngModel)]="usuario.senha" name="senha"
+            autocomplete="current-password" required />
         </mat-form-field>
+
+        <div class="cadastro-link">
+          <p>Ainda não tem conta?
+            <a routerLink="/cadastro">Criar conta</a>
+          </p>
+        </div>
 
         <button mat-flat-button class="btn-login">Entrar</button>
       </form>

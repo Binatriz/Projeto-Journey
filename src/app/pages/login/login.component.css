@@ -68,13 +68,21 @@
   width: 100%;
 }
 
-.textosLGPD {
-  display: block;
-  width: 300px;
-  margin: 8px;
-  font-size: 13px;
-  padding: 5px;
-  text-align: justify;
+.cadastro-link {
+  margin-bottom: 12px;
+  font-size: 14px;
+  text-align: center;
+  color: #ccc;
+}
+
+.cadastro-link a {
+  color: #4fa3ff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.cadastro-link a:hover {
+  text-decoration: underline;
 }
 
 /* BOTÃO */

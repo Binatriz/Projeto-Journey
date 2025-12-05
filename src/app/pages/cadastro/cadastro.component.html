@@ -1,1 +1,76 @@
-<p>cadastro works!</p>
+<div class="principal">
+    <div class="img">
+        <img src="carrosFord.png" alt="Imagem Ford" />
+    </div>
+
+    <div class="container-right">
+        <div class="cadastro-container">
+
+            <div class="cadastro-logo">
+                <img src="ford.png" alt="Ford Logo" />
+            </div>
+
+            <form class="cadastro-form" (ngSubmit)="cadastrar()">
+
+                <h2 class="cadastro-title">Criar Conta</h2>
+
+                <!-- NOME -->
+                <mat-form-field class="form-field">
+                    <mat-label>Nome completo</mat-label>
+                    <input aria-label="NomeCompleto" matInput type="text" name="nome" required
+                        [(ngModel)]="novoUsuario.nome" />
+                </mat-form-field>
+
+                <!-- EMAIL -->
+                <mat-form-field class="form-field">
+                    <mat-label>E-mail</mat-label>
+                    <input aria-label="Email" matInput type="email" name="email" required
+                        [(ngModel)]="novoUsuario.email" />
+                </mat-form-field>
+
+                <!-- SENHA -->
+                <mat-form-field class="form-field">
+                    <mat-label>Senha</mat-label>
+                    <input aria-label="Senha" matInput type="password" name="senha" required
+                        [(ngModel)]="novoUsuario.senha" />
+                </mat-form-field>
+
+                <!-- CONFIRMAÇÃO DE SENHA -->
+                <mat-form-field class="form-field">
+                    <mat-label>Confirmar senha</mat-label>
+                    <input aria-label="ConfirmarSenha" matInput type="password" name="confirmarSenha" required
+                        [(ngModel)]="novoUsuario.confirmarSenha" />
+                </mat-form-field>
+
+                <!-- LGPD -->
+                <div class="lgpd-text">
+                    Os seus dados serão utilizados apenas para criação da conta e personalização da sua experiência.
+                    Ficarão armazenados somente enquanto você desejar manter seu cadastro.
+                    Você pode editar ou excluir seus dados a qualquer momento.
+                    Consulte nossos
+                    <a target="_blank" rel="noopener" href="https://www.ford.com.br/politica-de-privacidade/">Termos e
+                        Condições</a>.
+                </div>
+
+                <div class="lgpd-check">
+                    <input type="checkbox" id="checkLGPD" required [(ngModel)]="novoUsuario.aceitouLGPD" name="lgpd" />
+                    <label for="checkLGPD">Li e aceito os Termos e Condições</label>
+                </div>
+
+                <button mat-flat-button class="btn-cadastro">Cadastrar</button>
+
+                <div class="login-voltar">
+                    <p>Já possui conta?
+                        <a routerLink="/login">Entrar</a>
+                    </p>
+                </div>
+
+            </form>
+
+            <div class="copyright">
+                <p>&copy; Ford 2025 — Todos os direitos reservados</p>
+            </div>
+
+        </div>
+    </div>
+</div>
