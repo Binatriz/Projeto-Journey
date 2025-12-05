@@ -1,10 +1,49 @@
+.principal {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;      
+  justify-content: center;  
+  position: relative;
+  overflow: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.container-right {
+  position: relative;
+  z-index: 2; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .cadastro-container {
-  background: #1a1c28;
+  background: #1a1c28cc;
   padding: 40px;
   border-radius: 16px;
   width: 380px;
+  max-width: 90%;
   box-shadow: 0 4px 25px rgba(0,0,0,0.45);
   text-align: center;
+
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
 }
 
 .cadastro-logo img {
@@ -39,13 +78,11 @@
   background: #3395ff !important;
 }
 
-/* LGPD */
 .lgpd-text {
   margin-top: 10px;
   font-size: 13px;
   color: #c8c8c8;
   line-height: 1.4;
-  text-align: left;
   text-align: justify;
 }
 
@@ -81,4 +118,61 @@
   margin-top: 20px;
   font-size: 12px;
   color: #777;
+}
+
+
+/* Telas menores que 768px (tablets e celulares grandes) */
+@media (max-width: 768px) {
+  .cadastro-container {
+    padding: 30px;
+    width: 90%;
+  }
+
+  .cadastro-title {
+    font-size: 22px;
+  }
+
+  .cadastro-logo img {
+    width: 100px;
+  }
+}
+
+/* Telas menores que 480px (celulares pequenos) */
+@media (max-width: 480px) {
+
+  .principal {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  .cadastro-container {
+    padding: 25px;
+    width: 92%;
+    border-radius: 14px;
+  }
+
+  .cadastro-title {
+    font-size: 20px;
+  }
+
+  .btn-cadastro {
+    height: 38px;
+    font-size: 14px;
+  }
+
+  .lgpd-text {
+    font-size: 12px;
+  }
+
+  .lgpd-check {
+    font-size: 12px;
+  }
+}
+
+/* Quando o teclado do celular abre - evita quebrar tudo */
+@media (max-height: 620px) {
+  .principal {
+    align-items: flex-start;
+    padding-top: 30px;
+  }
 }
