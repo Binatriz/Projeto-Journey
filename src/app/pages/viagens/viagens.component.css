@@ -1,12 +1,19 @@
+:host {
+  display: block;
+  height: 100vh;
+  overflow-y: auto;
+}
 
 .viagem-page {
-  text-align: center;
-  padding: 40px 20px;
-  padding-bottom: 80px; /* espaço para o footer */
   color: #ffffff;
+  text-align: center;
+
+  padding: 40px 20px;
+  padding-bottom: 80px;
+  /* espaço para o footer */
+
   font-family: 'Roboto', sans-serif;
-  min-height: 100vh;
-  padding: 40px 20px 120px; /* igual ao da outra página */
+  overflow-y: auto;
 }
 
 /* Título */
@@ -56,7 +63,7 @@
   font-size: 15px;
   outline: none;
   cursor: pointer;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
 
 .select-box select option {
@@ -72,7 +79,7 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
 .resultado-container h2 {
@@ -107,7 +114,7 @@
   width: 100%;
   max-width: 500px;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.45);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 @media (max-width: 480px) {

@@ -92,16 +92,12 @@
   background: #002b80 !important;
 }
 
-/* COPYRIGHT */
 .copyright p {
   font-size: 0.8rem;
   color: #ffffff;
   margin-top: 1rem;
 }
 
-/* =========================== */
-/* RESPONSIVIDADE REAL */
-/* =========================== */
 
 /* Tablets / telas médias */
 @media (max-width: 900px) {
@@ -150,7 +146,7 @@
   }
 }
 
-/* Celular super pequeno (Galaxy Fold / iPhone Mini) */
+/* Celular super pequeno  */
 @media (max-width: 330px) {
   .login-logo img {
     width: 110px;

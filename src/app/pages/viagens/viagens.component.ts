@@ -247,16 +247,6 @@ São ótimos companheiros para quem quer viajar gastando pouco e com agilidade.
     };
 
     this.sugestao = sugestoes[tipo];
-
-    setTimeout(() => {
-    window.scrollTo({
-      top: document.body.scrollHeight,
-      behavior: 'smooth'
-    });
-  }, 50);
-  setTimeout(() => {
-  document.getElementById('resultado')?.scrollIntoView({ behavior: 'smooth' });
-}, 50);
   }
 
 }

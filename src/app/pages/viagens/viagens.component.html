@@ -1,53 +1,53 @@
 <app-perfil></app-perfil>
-<div class="main-page">
-  <div class="viagem-page">
 
-    <h1>Planeje sua Próxima Jornada</h1>
+<div class="viagem-page">
 
-    <p class="intro-text">
-      Escolha seu modelo Ford e receba recomendações personalizadas de viagens
-      baseadas no estilo do seu carro.
-    </p>
+  <h1>Planeje sua Próxima Jornada</h1>
 
-    <!-- SELECTS -->
-    <div class="selects-container">
+  <p class="intro-text">
+    Escolha seu modelo Ford e receba recomendações personalizadas de viagens
+    baseadas no estilo do seu carro.
+  </p>
 
-      <!-- MODELO -->
-      <div class="select-box">
-        <label for="modeloSelect">Modelo Ford</label>
+  <!-- SELECTS -->
+  <div class="selects-container">
 
-        <select id="modeloSelect" aria-label="ModeloFord" [(ngModel)]="selectedModelo" (change)="onModeloChange()">
+    <!-- MODELO -->
+    <div class="select-box">
+      <label for="modeloSelect">Modelo Ford</label>
 
-          <option [ngValue]="null">Selecione</option>
+      <select id="modeloSelect" aria-label="ModeloFord" [(ngModel)]="selectedModelo" (change)="onModeloChange()">
 
-          <option *ngFor="let m of modelos" [ngValue]="m">
-            {{ m.nome }}
-          </option>
+        <option [ngValue]="null">Selecione</option>
 
-        </select>
-      </div>
+        <option *ngFor="let m of modelos" [ngValue]="m">
+          {{ m.nome }}
+        </option>
 
-    </div>
-
-    <!-- RESULTADO FINAL -->
-    <div class="resultado-container" id="resultado" *ngIf="sugestao">
-
-      <h2>{{ sugestao.titulo }}</h2>
-
-      <p class="descricao-text">{{ sugestao.descricao }}</p>
-
-      <h3>Destinos recomendados:</h3>
-
-      <ul>
-        <li *ngFor="let d of sugestao.destinosIndicados">{{ d }}</li>
-      </ul>
-
-      <!-- IMAGEM -->
-      <div class="imagem-container" *ngIf="sugestao.imagem">
-        <img [src]="sugestao.imagem" alt="Sugestão de viagem">
-      </div>
-
+      </select>
     </div>
 
   </div>
+
+  <!-- RESULTADO FINAL -->
+  <div class="resultado-container" id="resultado" *ngIf="sugestao">
+
+    <h2>{{ sugestao.titulo }}</h2>
+
+    <p class="descricao-text">{{ sugestao.descricao }}</p>
+
+    <h3>Destinos recomendados:</h3>
+
+    <ul>
+      <li *ngFor="let d of sugestao.destinosIndicados">{{ d }}</li>
+    </ul>
+
+    <!-- IMAGEM -->
+    <div class="imagem-container" *ngIf="sugestao.imagem">
+      <img [src]="sugestao.imagem" alt="Sugestão de viagem">
+    </div>
+
+  </div>
+
+
 </div>
