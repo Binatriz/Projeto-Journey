@@ -73,6 +73,16 @@ export class MetasService {
     );
   }
 
+  cadastrar(usuario: {
+    nome: string;
+    email: string;
+    senha: string;
+    confirmarSenha: string;
+    aceitouLGPD: boolean;
+  }): Observable<any> {
+    return this.http.post(`${this.apiUrl}/usuarios`, usuario);
+  }
+
   logout(): void {
     sessionStorage.removeItem(key);
     this.router.navigate(['/login']);

@@ -53,7 +53,7 @@ export class CadastroComponent {
     }
 
     // --- CHAMADA PARA O BACK-END ---
-    /*this.metasService.cadastrar(this.novoUsuario).subscribe({
+    this.metasService.cadastrar(this.novoUsuario).subscribe({
       next: (response) => {
         alert("Cadastro realizado com sucesso!");
         this.router.navigate(['/login']);
@@ -62,7 +62,7 @@ export class CadastroComponent {
         console.error(err);
         alert("Erro ao realizar o cadastro.");
       }
-    });*/
+    });
   }
 
 }
