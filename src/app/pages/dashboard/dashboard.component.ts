@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilComponent } from "../../perfil/perfil.component";
 import { MetasService } from '../../services/metas.service';
+import { RouterLink } from "@angular/router";
 
 @Component({
   selector: 'app-dashboard',
-  imports: [PerfilComponent],
+  imports: [PerfilComponent, RouterLink],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css'
 })

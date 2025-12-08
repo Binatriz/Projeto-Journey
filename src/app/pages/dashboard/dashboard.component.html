@@ -11,34 +11,38 @@
         <div class="cards">
 
             <!-- CARD 1 – PROGRESSO DA VIAGEM -->
+
             <div class="card">
-                <h3>Viagem Ford</h3>
-                <p>Progresso geral das metas:</p>
+                <a class="nav-link active" routerLink="/metas">
+                    <h3>Viagem Ford</h3>
+                    <p>Progresso geral das metas:</p>
 
-                <div class="progress-bar">
-                    <div class="progress-value" [style.width.%]="progressoGeral"></div>
-                </div>
+                    <div class="progress-bar">
+                        <div class="progress-value" [style.width.%]="progressoGeral"></div>
+                    </div>
 
-                <p style="margin-top: 8px;">{{ progressoGeral }}% completo</p>
+                    <p style="margin-top: 8px;">{{ progressoGeral }}% completo</p>
+                </a>
             </div>
+
 
             <!-- CARD 2 – CAR LEVEL -->
             <div class="card">
-                <h3>Nível do Carro Ford</h3>
-                <p>Nível atual: <strong>Ford Ka</strong></p>
+                <a class="nav-link active" routerLink="/viagens">
+                    <h3>Carro FORD</h3>
+                    <p>Planeje<strong> sua </strong>próxima jornada</p>
 
-                <div class="progress-bar">
-                    <div class="progress-value" style="width: 40%;"></div>
-                </div>
-
-                <p style="margin-top: 8px;">Rumo ao Mustang</p>
+                    <p style="margin-top: 8px;">Clique para ver roteiros detalhados</p>
+                </a>
             </div>
 
             <!-- CARD 3 – METAS ATIVAS -->
             <div class="card">
-                <h3>Metas Ativas</h3>
-                <p>Total: <strong>{{ totalMetas }} metas</strong></p>
-                <p>{{ metasConcluidas }} concluídas</p>
+                <a class="nav-link active" routerLink="/metas">
+                    <h3>Metas Ativas</h3>
+                    <p>Total: <strong>{{ totalMetas }} metas</strong></p>
+                    <p>{{ metasConcluidas }} concluídas</p>
+                </a>
             </div>
 
         </div>

@@ -20,8 +20,7 @@ export class PerfilComponent {
     }
   
   // Dados do usuário (virão do backend depois)
-  userName: string = "Beatriz";
-  carLevel: string = "Ford Focus";
+  userName: string = "admin";
 
   menuOnClick(): void {
     const menuBar = document.getElementById("menu-bar");
