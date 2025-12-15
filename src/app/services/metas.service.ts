@@ -77,8 +77,6 @@ export class MetasService {
     nome: string;
     email: string;
     senha: string;
-    confirmarSenha: string;
-    aceitouLGPD: boolean;
   }): Observable<any> {
     return this.http.post(`${this.apiUrl}/usuarios`, usuario);
   }

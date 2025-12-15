@@ -24,21 +24,32 @@ import { MetasService } from '../../services/metas.service';
 export class LoginComponent {
 
   usuario = {
-    nome:'',
-    senha:''
+    nome: '',
+    senha: ''
   }
 
   constructor(private metasService: MetasService, private router: Router) { }
 
-  login(){
-    this.metasService.login(this.usuario).subscribe({
-      next:(response)=>{
+  login() {
+
+    const usuarioLogin = {
+      nome: this.usuario.nome, // pode ser nome OU email
+      senha: this.usuario.senha
+    };
+
+    this.metasService.login(usuarioLogin).subscribe({
+      next: (response) => {
         console.log("Entrou");
+
+        // garante sessão local (caso o backend não faça)
+        sessionStorage.setItem('auth-user', JSON.stringify(response));
+
         this.router.navigate(['/dashboard']);
       },
-      error:(err)=>{
-        alert("Usuario ou Senha incorretos")
+      error: (err) => {
+        alert("Usuário (nome ou e-mail) ou senha incorretos");
       }
-    })
+    });
+
   }
 }
