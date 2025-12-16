@@ -6,6 +6,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MetasService } from '../../services/metas.service';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -29,30 +30,31 @@ export class LoginComponent {
   }
 
   constructor(private metasService: MetasService, private router: Router) { }
-formInvalido = false;
+  formInvalido = false;
 
-login() {
+  login(form: NgForm) {
 
-  if (!this.usuario.nome || !this.usuario.senha) {
-    this.formInvalido = true;
-    return;
-  }
-
-  this.formInvalido = false;
-
-  const usuarioLogin = {
-    nome: this.usuario.nome,
-    senha: this.usuario.senha
-  };
-
-  this.metasService.login(usuarioLogin).subscribe({
-    next: (response) => {
-      sessionStorage.setItem('auth-user', JSON.stringify(response));
-      this.router.navigate(['/dashboard']);
-    },
-    error: () => {
-      alert("Usuário (nome ou e-mail) ou senha incorretos");
+    if (form.invalid) {
+      this.formInvalido = true;
+      form.control.markAllAsTouched(); // mostra erros
+      return;
     }
-  });
-}
+
+    this.formInvalido = false;
+
+    const usuarioLogin = {
+      nome: this.usuario.nome,
+      senha: this.usuario.senha
+    };
+
+    this.metasService.login(usuarioLogin).subscribe({
+      next: (response) => {
+        sessionStorage.setItem('auth-user', JSON.stringify(response));
+        this.router.navigate(['/dashboard']);
+      },
+      error: () => {
+        alert("Usuário (nome ou e-mail) ou senha incorretos");
+      }
+    });
+  }
 }
