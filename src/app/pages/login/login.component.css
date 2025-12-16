@@ -67,7 +67,12 @@
 .form-field {
   width: 100%;
 }
-
+.error-geral {
+  color: #ff4d4f;
+  font-size: 0.9rem;
+  text-align: center;
+  padding-top: 1%;
+}
 .cadastro-link {
   margin-bottom: 12px;
   font-size: 14px;

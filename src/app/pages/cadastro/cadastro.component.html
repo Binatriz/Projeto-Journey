@@ -10,7 +10,7 @@
                 <img src="ford.png" alt="Ford Logo" />
             </div>
 
-            <form class="cadastro-form" (ngSubmit)="cadastrar()">
+            <form class="cadastro-form" #cadastroForm="ngForm" (ngSubmit)="cadastrar(cadastroForm)">
 
                 <h2 class="cadastro-title">Criar Conta</h2>
 
@@ -18,28 +18,64 @@
                 <mat-form-field class="form-field">
                     <mat-label>Nome completo</mat-label>
                     <input aria-label="NomeCompleto" matInput type="text" name="nome" required
-                        [(ngModel)]="novoUsuario.nome" />
+                        [(ngModel)]="novoUsuario.nome" #nome="ngModel" />
+
+                    <mat-error class="error-geral" class="error-geral" *ngIf="nome.invalid && nome.touched">
+                        O nome completo é obrigatório
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- EMAIL -->
                 <mat-form-field class="form-field">
                     <mat-label>E-mail</mat-label>
-                    <input aria-label="Email" matInput type="email" name="email" required
-                        [(ngModel)]="novoUsuario.email" />
+                    <input aria-label="Email" matInput type="email" name="email" required email
+                        [(ngModel)]="novoUsuario.email" #email="ngModel" />
+
+                    <mat-error class="error-geral" *ngIf="email.errors?.['required'] && email.touched">
+                        O e-mail é obrigatório
+                    </mat-error>
+
+                    <mat-error class="error-geral" *ngIf="email.errors?.['email'] && email.touched">
+                        E-mail inválido
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- SENHA -->
                 <mat-form-field class="form-field">
                     <mat-label>Senha</mat-label>
-                    <input aria-label="Senha" matInput type="password" name="senha" required
-                        [(ngModel)]="novoUsuario.senha" />
+                    <input aria-label="Senha" matInput type="password" name="senha" required minlength="6"
+                        [(ngModel)]="novoUsuario.senha" #senha="ngModel" />
+
+                    <mat-error class="error-geral" *ngIf="senha.errors?.['required'] && senha.touched">
+                        A senha é obrigatória
+                    </mat-error>
+
+                    <mat-error class="error-geral" *ngIf="senha.errors?.['minlength'] && senha.touched">
+                        A senha deve ter no mínimo 6 caracteres
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- CONFIRMAÇÃO DE SENHA -->
                 <mat-form-field class="form-field">
                     <mat-label>Confirmar senha</mat-label>
                     <input aria-label="ConfirmarSenha" matInput type="password" name="confirmarSenha" required
-                        [(ngModel)]="novoUsuario.confirmarSenha" />
+                        [(ngModel)]="novoUsuario.confirmarSenha" #confirmarSenha="ngModel"
+                        (ngModelChange)="validarSenhas(confirmarSenha)" />
+
+                    <mat-error class="error-geral" *ngIf="
+    confirmarSenha.errors?.['required'] &&
+    confirmarSenha.touched
+  ">
+                        Confirme sua senha
+                    </mat-error>
+
+                    <!-- ERRO: SENHAS DIFERENTES -->
+                    <mat-error class="error-geral" *ngIf="
+    confirmarSenha.errors?.['senhaDiferente'] &&
+    confirmarSenha.touched
+  ">
+                        As senhas não coincidem
+                    </mat-error>
                 </mat-form-field>
 
                 <!-- LGPD -->
@@ -53,10 +89,18 @@
                 </div>
 
                 <div class="lgpd-check">
-                    <input type="checkbox" id="checkLGPD" required [(ngModel)]="novoUsuario.aceitouLGPD" name="lgpd" />
+                    <input type="checkbox" id="checkLGPD" required [(ngModel)]="novoUsuario.aceitouLGPD" name="lgpd"
+                        #lgpd="ngModel" />
                     <label for="checkLGPD">Li e aceito os Termos e Condições</label>
                 </div>
 
+                <p class="error-geral" *ngIf="lgpd.invalid && lgpd.touched">
+                    Você precisa aceitar os Termos e Condições
+                </p>
+
+                <p class="error-geral" *ngIf="formInvalido && cadastroForm.invalid">
+                    Preencha todos os campos obrigatórios
+                </p>
                 <button mat-flat-button class="btn-cadastro" type="submit">
                     Cadastrar
                 </button>
