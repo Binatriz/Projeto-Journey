@@ -23,7 +23,7 @@ const key = "auth-user";
 })
 export class MetasService {
 
-  private apiUrl = 'https://projeto-api-journey.vercel.app/api/';
+  private apiUrl = 'https://projeto-api-journey.vercel.app/api';
   private baseUrl = 'https://projeto-api-journey.vercel.app/api/metas';
 
   // ⭐ EXEMPLO PADRÃO INICIAL (APENAS UMA VEZ)
